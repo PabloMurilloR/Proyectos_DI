@@ -1,0 +1,10 @@
+C:\Users\alumno\Source\Repos\CalculadoraPablo\bin\Debug\CalculadoraPablo.exe.config
+C:\Users\alumno\Source\Repos\CalculadoraPablo\bin\Debug\CalculadoraPablo.exe
+C:\Users\alumno\Source\Repos\CalculadoraPablo\bin\Debug\CalculadoraPablo.pdb
+C:\Users\alumno\Source\Repos\CalculadoraPablo\obj\Debug\CalculadoraPablo.csprojAssemblyReference.cache
+C:\Users\alumno\Source\Repos\CalculadoraPablo\obj\Debug\CalculadoraPablo.Calculadora.resources
+C:\Users\alumno\Source\Repos\CalculadoraPablo\obj\Debug\CalculadoraPablo.Properties.Resources.resources
+C:\Users\alumno\Source\Repos\CalculadoraPablo\obj\Debug\CalculadoraPablo.csproj.GenerateResource.cache
+C:\Users\alumno\Source\Repos\CalculadoraPablo\obj\Debug\CalculadoraPablo.csproj.CoreCompileInputs.cache
+C:\Users\alumno\Source\Repos\CalculadoraPablo\obj\Debug\CalculadoraPablo.exe
+C:\Users\alumno\Source\Repos\CalculadoraPablo\obj\Debug\CalculadoraPablo.pdb
