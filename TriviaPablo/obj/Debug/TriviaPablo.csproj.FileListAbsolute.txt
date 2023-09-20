@@ -1,0 +1,10 @@
+C:\Users\alumno\Source\Repos\TriviaPablo\bin\Debug\TriviaPablo.exe.config
+C:\Users\alumno\Source\Repos\TriviaPablo\bin\Debug\TriviaPablo.exe
+C:\Users\alumno\Source\Repos\TriviaPablo\bin\Debug\TriviaPablo.pdb
+C:\Users\alumno\Source\Repos\TriviaPablo\obj\Debug\TriviaPablo.csprojAssemblyReference.cache
+C:\Users\alumno\Source\Repos\TriviaPablo\obj\Debug\TriviaPablo.Form1.resources
+C:\Users\alumno\Source\Repos\TriviaPablo\obj\Debug\TriviaPablo.Properties.Resources.resources
+C:\Users\alumno\Source\Repos\TriviaPablo\obj\Debug\TriviaPablo.csproj.GenerateResource.cache
+C:\Users\alumno\Source\Repos\TriviaPablo\obj\Debug\TriviaPablo.csproj.CoreCompileInputs.cache
+C:\Users\alumno\Source\Repos\TriviaPablo\obj\Debug\TriviaPablo.exe
+C:\Users\alumno\Source\Repos\TriviaPablo\obj\Debug\TriviaPablo.pdb
