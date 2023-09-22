@@ -20,10 +20,12 @@ namespace TriviaPablo
                 "Eslovaquia", "Eslovenia", "España", "Estonia", "Finlandia", "Francia", "Grecia", "Hungría", "Irlanda",
                 "Italia", "Letonia", "Lituania", "Luxemburgo", "Malta", "Países Bajos", "Polonia", "Portugal",
                 "Reino Unido", "Chéquia", "Rumanía", "Suecia" };
-public Form1()
+        public Form1()
         {
             InitializeComponent();
-            Random aleatorio = new Random();
+            //Random aleatorio = new Random();
+            //int numAleatorio = aleatorio.Next(0, Paises.Length);
+
             //this.Pregunta = Paises.;
         }
 
@@ -34,12 +36,12 @@ public Form1()
 
         private void PartidaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void OpcionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void NombreCapitalesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -50,7 +52,10 @@ public Form1()
             {
                 capital.Checked = true;
                 paises.Checked = false;
-            } else
+                Opcion1.Text = "Pais:";
+                Opcion2.Text = "Capital:";
+            }
+            else
             {
                 capital.Checked = true;
             }
@@ -64,6 +69,8 @@ public Form1()
             {
                 paises.Checked = true;
                 capital.Checked = false;
+                Opcion1.Text = "Capital:";
+                Opcion2.Text = "Pais:";
             }
             else
             {
@@ -80,6 +87,11 @@ public Form1()
             {
                 multiples.Checked = true;
                 escribir.Checked = false;
+                Respuesta1.Visible = true;
+                Respuesta1.Enabled = false;
+                Respuesta2.Visible = true;
+                Respuesta3.Visible = true;
+                Respuesta4.Visible = true;
             }
             else
             {
@@ -95,11 +107,40 @@ public Form1()
             {
                 escribir.Checked = true;
                 multiples.Checked = false;
+                Respuesta1.Enabled = true;
+                Respuesta2.Visible = false;
+                Respuesta3.Visible = false;
+                Respuesta4.Visible = false;
             }
             else
             {
                 escribir.Checked = true;
             }
+        }
+
+        private void Respuesta1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Respuesta1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Respuesta2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Respuesta3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Respuesta4_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void Salir_Click(object sender, EventArgs e)

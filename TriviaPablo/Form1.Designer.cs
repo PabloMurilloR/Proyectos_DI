@@ -39,7 +39,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.múltiplesOpcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.escribirRespuestaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Opicion1 = new System.Windows.Forms.Label();
+            this.Opcion1 = new System.Windows.Forms.Label();
             this.Pregunta = new System.Windows.Forms.TextBox();
             this.Opcion2 = new System.Windows.Forms.Label();
             this.Resultado = new System.Windows.Forms.TextBox();
@@ -79,18 +79,18 @@
             // nuevaToolStripMenuItem
             // 
             this.nuevaToolStripMenuItem.Name = "nuevaToolStripMenuItem";
-            this.nuevaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nuevaToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.nuevaToolStripMenuItem.Text = "Nueva";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(105, 6);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             // 
             // opcionesToolStripMenuItem
@@ -112,7 +112,7 @@
             this.nombreCapitalesToolStripMenuItem.CheckOnClick = true;
             this.nombreCapitalesToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.nombreCapitalesToolStripMenuItem.Name = "nombreCapitalesToolStripMenuItem";
-            this.nombreCapitalesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nombreCapitalesToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.nombreCapitalesToolStripMenuItem.Text = "Nombre Capitales";
             this.nombreCapitalesToolStripMenuItem.Click += new System.EventHandler(this.NombreCapitalesToolStripMenuItem_Click);
             // 
@@ -120,14 +120,14 @@
             // 
             this.nombrePaisesToolStripMenuItem.CheckOnClick = true;
             this.nombrePaisesToolStripMenuItem.Name = "nombrePaisesToolStripMenuItem";
-            this.nombrePaisesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nombrePaisesToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.nombrePaisesToolStripMenuItem.Text = "Nombre Paises";
             this.nombrePaisesToolStripMenuItem.Click += new System.EventHandler(this.NombrePaisesToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(171, 6);
             // 
             // múltiplesOpcionesToolStripMenuItem
             // 
@@ -135,7 +135,7 @@
             this.múltiplesOpcionesToolStripMenuItem.CheckOnClick = true;
             this.múltiplesOpcionesToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.múltiplesOpcionesToolStripMenuItem.Name = "múltiplesOpcionesToolStripMenuItem";
-            this.múltiplesOpcionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.múltiplesOpcionesToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.múltiplesOpcionesToolStripMenuItem.Text = "Múltiples opciones";
             this.múltiplesOpcionesToolStripMenuItem.Click += new System.EventHandler(this.MúltiplesOpcionesToolStripMenuItem_Click);
             // 
@@ -143,24 +143,24 @@
             // 
             this.escribirRespuestaToolStripMenuItem.CheckOnClick = true;
             this.escribirRespuestaToolStripMenuItem.Name = "escribirRespuestaToolStripMenuItem";
-            this.escribirRespuestaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.escribirRespuestaToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.escribirRespuestaToolStripMenuItem.Text = "Escribir respuesta";
             this.escribirRespuestaToolStripMenuItem.Click += new System.EventHandler(this.EscribirRespuestaToolStripMenuItem_Click);
             // 
-            // Opicion1
+            // Opcion1
             // 
-            this.Opicion1.AutoSize = true;
-            this.Opicion1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Opicion1.Location = new System.Drawing.Point(12, 29);
-            this.Opicion1.Name = "Opicion1";
-            this.Opicion1.Size = new System.Drawing.Size(38, 16);
-            this.Opicion1.TabIndex = 1;
-            this.Opicion1.Text = "Pais:";
+            this.Opcion1.AutoSize = true;
+            this.Opcion1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Opcion1.Location = new System.Drawing.Point(12, 29);
+            this.Opcion1.Name = "Opcion1";
+            this.Opcion1.Size = new System.Drawing.Size(38, 16);
+            this.Opcion1.TabIndex = 1;
+            this.Opcion1.Text = "Pais:";
             // 
             // Pregunta
             // 
             this.Pregunta.Enabled = false;
-            this.Pregunta.Location = new System.Drawing.Point(12, 48);
+            this.Pregunta.Location = new System.Drawing.Point(12, 57);
             this.Pregunta.Multiline = true;
             this.Pregunta.Name = "Pregunta";
             this.Pregunta.Size = new System.Drawing.Size(279, 41);
@@ -193,43 +193,48 @@
             // 
             // Respuesta1
             // 
-            this.Respuesta1.Enabled = false;
             this.Respuesta1.Location = new System.Drawing.Point(12, 157);
             this.Respuesta1.Multiline = true;
             this.Respuesta1.Name = "Respuesta1";
+            this.Respuesta1.ReadOnly = true;
             this.Respuesta1.Size = new System.Drawing.Size(279, 41);
             this.Respuesta1.TabIndex = 5;
             this.Respuesta1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Respuesta1.Click += new System.EventHandler(this.Respuesta1_Click);
+            this.Respuesta1.TextChanged += new System.EventHandler(this.Respuesta1_TextChanged);
             // 
             // Respuesta2
             // 
-            this.Respuesta2.Enabled = false;
             this.Respuesta2.Location = new System.Drawing.Point(12, 204);
             this.Respuesta2.Multiline = true;
             this.Respuesta2.Name = "Respuesta2";
+            this.Respuesta2.ReadOnly = true;
             this.Respuesta2.Size = new System.Drawing.Size(279, 41);
             this.Respuesta2.TabIndex = 6;
             this.Respuesta2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Respuesta2.Click += new System.EventHandler(this.Respuesta2_Click);
             // 
             // Respuesta3
             // 
-            this.Respuesta3.Enabled = false;
             this.Respuesta3.Location = new System.Drawing.Point(12, 251);
             this.Respuesta3.Multiline = true;
             this.Respuesta3.Name = "Respuesta3";
+            this.Respuesta3.ReadOnly = true;
             this.Respuesta3.Size = new System.Drawing.Size(279, 41);
             this.Respuesta3.TabIndex = 7;
             this.Respuesta3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Respuesta3.Click += new System.EventHandler(this.Respuesta3_Click);
             // 
             // Respuesta4
             // 
-            this.Respuesta4.Enabled = false;
             this.Respuesta4.Location = new System.Drawing.Point(12, 298);
             this.Respuesta4.Multiline = true;
             this.Respuesta4.Name = "Respuesta4";
+            this.Respuesta4.ReadOnly = true;
             this.Respuesta4.Size = new System.Drawing.Size(279, 41);
             this.Respuesta4.TabIndex = 8;
             this.Respuesta4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Respuesta4.Click += new System.EventHandler(this.Respuesta4_Click);
             // 
             // Siguiente
             // 
@@ -278,7 +283,7 @@
             this.Controls.Add(this.Resultado);
             this.Controls.Add(this.Opcion2);
             this.Controls.Add(this.Pregunta);
-            this.Controls.Add(this.Opicion1);
+            this.Controls.Add(this.Opcion1);
             this.Controls.Add(this.MenuOpciones);
             this.MainMenuStrip = this.MenuOpciones;
             this.Name = "Form1";
@@ -303,7 +308,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem múltiplesOpcionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem escribirRespuestaToolStripMenuItem;
-        private System.Windows.Forms.Label Opicion1;
+        private System.Windows.Forms.Label Opcion1;
         private System.Windows.Forms.TextBox Pregunta;
         private System.Windows.Forms.Label Opcion2;
         private System.Windows.Forms.TextBox Resultado;
