@@ -1,0 +1,11 @@
+C:\Users\alumno\Source\Repos\BibliotecaPablo\obj\Debug\BibliotecaPablo.csprojAssemblyReference.cache
+C:\Users\alumno\Source\Repos\BibliotecaPablo\obj\Debug\BibliotecaPablo.Form1.resources
+C:\Users\alumno\Source\Repos\BibliotecaPablo\obj\Debug\BibliotecaPablo.Properties.Resources.resources
+C:\Users\alumno\Source\Repos\BibliotecaPablo\obj\Debug\BibliotecaPablo.csproj.GenerateResource.cache
+C:\Users\alumno\Source\Repos\BibliotecaPablo\obj\Debug\BibliotecaPablo.csproj.CoreCompileInputs.cache
+C:\Users\alumno\Source\Repos\BibliotecaPablo\bin\Debug\BibliotecaPablo.exe.config
+C:\Users\alumno\Source\Repos\BibliotecaPablo\bin\Debug\BibliotecaPablo.exe
+C:\Users\alumno\Source\Repos\BibliotecaPablo\bin\Debug\BibliotecaPablo.pdb
+C:\Users\alumno\Source\Repos\BibliotecaPablo\obj\Debug\BibliotecaPablo.exe
+C:\Users\alumno\Source\Repos\BibliotecaPablo\obj\Debug\BibliotecaPablo.pdb
+C:\Users\alumno\Source\Repos\BibliotecaPablo\obj\Debug\BibliotecaPablo.Alta.resources
