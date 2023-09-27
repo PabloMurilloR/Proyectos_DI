@@ -35,7 +35,22 @@ namespace BibliotecaPablo
 
         private void AltaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Alta().Show();
+            /*if(formAbierto("Alta"))
+            {
+
+            }*/
+            Alta alta = new Alta();
+            alta.MdiParent = this;
+            alta.Dock = DockStyle.Fill;
+            alta.Show();
+        }
+
+        private void ConsultaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Consulta consulta = new Consulta();
+            consulta.MdiParent = this;
+            consulta.Dock = DockStyle.Fill;
+            consulta.Show();
         }
     }
 }

@@ -9,3 +9,4 @@ C:\Users\alumno\Source\Repos\BibliotecaPablo\bin\Debug\BibliotecaPablo.pdb
 C:\Users\alumno\Source\Repos\BibliotecaPablo\obj\Debug\BibliotecaPablo.exe
 C:\Users\alumno\Source\Repos\BibliotecaPablo\obj\Debug\BibliotecaPablo.pdb
 C:\Users\alumno\Source\Repos\BibliotecaPablo\obj\Debug\BibliotecaPablo.Alta.resources
+C:\Users\alumno\Source\Repos\BibliotecaPablo\obj\Debug\BibliotecaPablo.Consulta.resources
