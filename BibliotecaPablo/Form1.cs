@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BibliotecaPablo
@@ -35,22 +28,37 @@ namespace BibliotecaPablo
 
         private void AltaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /*if(formAbierto("Alta"))
+            if (formIsOpen("Alta") == false)
             {
-
-            }*/
-            Alta alta = new Alta();
-            alta.MdiParent = this;
-            alta.Dock = DockStyle.Fill;
-            alta.Show();
+                Alta alta = new Alta();
+                alta.MdiParent = this;
+                alta.Dock = DockStyle.Fill;
+                alta.Show();
+            }
         }
 
         private void ConsultaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Consulta consulta = new Consulta();
-            consulta.MdiParent = this;
-            consulta.Dock = DockStyle.Fill;
-            consulta.Show();
+            if (formIsOpen("Consulta") == false)
+            {
+                Consulta consulta = new Consulta();
+                consulta.MdiParent = this;
+                consulta.Dock = DockStyle.Fill;
+                consulta.Show();
+            }
+        }
+
+        bool formIsOpen(string nombre_form)
+        {
+            foreach (var form_hijo in this.MdiChildren)
+            {
+                if (form_hijo.Text == nombre_form)
+                {
+                    form_hijo.BringToFront();
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
