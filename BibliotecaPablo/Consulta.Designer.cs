@@ -28,7 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.label1 = new System.Windows.Forms.Label();
+            this.ConsultaTB = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(211, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(192, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Consulta de Libros";
+            // 
+            // ConsultaTB
+            // 
+            this.ConsultaTB.Location = new System.Drawing.Point(12, 117);
+            this.ConsultaTB.Multiline = true;
+            this.ConsultaTB.Name = "ConsultaTB";
+            this.ConsultaTB.Size = new System.Drawing.Size(607, 317);
+            this.ConsultaTB.TabIndex = 1;
             // 
             // Consulta
             // 
@@ -38,15 +58,21 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(631, 446);
             this.ControlBox = false;
+            this.Controls.Add(this.ConsultaTB);
+            this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.8F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Consulta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox ConsultaTB;
     }
 }

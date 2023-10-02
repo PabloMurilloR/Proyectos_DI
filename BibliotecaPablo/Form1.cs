@@ -1,14 +1,32 @@
 ﻿using System;
+using System.Collections;
 using System.Windows.Forms;
 
 namespace BibliotecaPablo
 {
     public partial class Form1 : Form
     {
+        public static ArrayList libros;
+
         public Form1()
         {
             InitializeComponent();
-            
+            libros = new ArrayList();
+
+
+        }
+
+        public static void InsertarLibro(Libro libroNuevo)
+        {
+            libros.Add(libroNuevo);
+        }
+
+        public static void MostrarLibros()
+        {
+            foreach (Libro item in libros)
+            {
+
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -23,7 +41,7 @@ namespace BibliotecaPablo
 
         private void SalirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            salir();
         }
 
         private void AltaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -60,5 +78,24 @@ namespace BibliotecaPablo
             }
             return false;
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            salir();
+        }
+
+        private void salir()
+        {
+            DialogResult resultado = MessageBox.Show("¿Desea salir?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                Dispose();
+            }
+
+            
+        }
+
+        
     }
 }

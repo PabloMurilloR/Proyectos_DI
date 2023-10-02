@@ -15,6 +15,7 @@ namespace BibliotecaPablo
         public Consulta()
         {
             InitializeComponent();
+            ConsultaTB.Text = Form1.libros[0].ToString();
         }
     }
 }
