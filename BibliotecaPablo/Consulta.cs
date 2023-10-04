@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +13,46 @@ namespace BibliotecaPablo
 {
     public partial class Consulta : Form
     {
-        public Consulta()
+        ArrayList libros;
+
+        public Consulta(ArrayList libros)
         {
             InitializeComponent();
-            ConsultaTB.Text = Form1.libros[0].ToString();
+            this.libros = libros;
+        }
+
+        private void AutorRB_CheckedChanged(object sender, EventArgs e)
+        {
+            ArrayList autores = new ArrayList();
+
+            AutorEditorialLB.Items.Clear();
+
+            foreach (Libro item in libros)
+            {
+                autores.Add(item.Autor);
+            }
+
+            AutorEditorialLB.Items.AddRange(autores.ToArray());
+        }
+
+        private void EditorialRB_CheckedChanged(object sender, EventArgs e)
+        {
+            ArrayList editoriales = new ArrayList();
+
+            AutorEditorialLB.Items.Clear();
+
+            foreach (Libro item in libros)
+            {
+                editoriales.Add(item.Editorial);
+            }
+            AutorEditorialLB.Items.AddRange(editoriales.ToArray());
+
+        }
+
+        private void AutorEditorialLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //aqui hay que hacer que dependendiendo del autor/editorial que seleccionemos se cambien
+            //los titulos en el listbox de la derecha
         }
     }
 }

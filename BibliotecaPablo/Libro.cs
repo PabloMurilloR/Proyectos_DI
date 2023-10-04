@@ -8,17 +8,19 @@ namespace BibliotecaPablo
 {
     public class Libro
     {
-        private String titulo;
-        private String autor;
-        private String editorial;
+        private string titulo;
+        private string autor;
+        private string editorial;
         private bool nuevo;
+        private string rutaFoto;
 
-        public Libro(string titulo, string autor, string editorial, bool nuevo)
+        public Libro(string titulo, string autor, string editorial, bool nuevo, string rutaFoto)
         {
             this.titulo = titulo;
             this.autor = autor;
             this.editorial = editorial;
             this.nuevo = nuevo;
+            this.rutaFoto = rutaFoto;
         }
         
         public override string ToString()
@@ -44,6 +46,11 @@ namespace BibliotecaPablo
         public bool Nuevo {
             get { return nuevo; }
             set { nuevo = value; }
+        }
+
+        public string RutaFoto {
+            get { return rutaFoto; }
+            set { rutaFoto = value; }
         }
 
     }

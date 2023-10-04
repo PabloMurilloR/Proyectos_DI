@@ -6,28 +6,14 @@ namespace BibliotecaPablo
 {
     public partial class Form1 : Form
     {
-        public static ArrayList libros;
+        ArrayList libros = new ArrayList();
 
         public Form1()
         {
             InitializeComponent();
-            libros = new ArrayList();
-
 
         }
 
-        public static void InsertarLibro(Libro libroNuevo)
-        {
-            libros.Add(libroNuevo);
-        }
-
-        public static void MostrarLibros()
-        {
-            foreach (Libro item in libros)
-            {
-
-            }
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -41,14 +27,14 @@ namespace BibliotecaPablo
 
         private void SalirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            salir();
+            Form1_FormClosing(null, null);
         }
 
         private void AltaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (formIsOpen("Alta") == false)
             {
-                Alta alta = new Alta();
+                Alta alta = new Alta(libros);
                 alta.MdiParent = this;
                 alta.Dock = DockStyle.Fill;
                 alta.Show();
@@ -59,7 +45,7 @@ namespace BibliotecaPablo
         {
             if (formIsOpen("Consulta") == false)
             {
-                Consulta consulta = new Consulta();
+                Consulta consulta = new Consulta(libros);
                 consulta.MdiParent = this;
                 consulta.Dock = DockStyle.Fill;
                 consulta.Show();
@@ -81,21 +67,20 @@ namespace BibliotecaPablo
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            salir();
-        }
-
-        private void salir()
-        {
-            DialogResult resultado = MessageBox.Show("¿Desea salir?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("¿Desea salir?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (resultado == DialogResult.Yes)
             {
                 Dispose();
             }
+            else
+            {
+                if (e != null)
+                {
+                    e.Cancel = true;
+                }
 
-            
+            }
         }
-
-        
     }
 }
