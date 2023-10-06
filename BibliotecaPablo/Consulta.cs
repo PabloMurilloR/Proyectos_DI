@@ -27,6 +27,7 @@ namespace BibliotecaPablo
         private void AutorRB_CheckedChanged(object sender, EventArgs e)
         {
             AutorEditorialLB.Items.Clear();
+            FotoPB.Image = null;
 
             autores = new ArrayList();
 
@@ -43,6 +44,7 @@ namespace BibliotecaPablo
 
         private void EditorialRB_CheckedChanged(object sender, EventArgs e)
         {
+            FotoPB.Image = null;
             AutorEditorialLB.Items.Clear();
 
             editoriales = new ArrayList();
@@ -65,8 +67,8 @@ namespace BibliotecaPablo
             titulos = new ArrayList();
 
             titulos.Clear();
-
             TituloLB.Items.Clear();
+            FotoPB.Image = null;
 
             if (AutorRB.Checked)
             {
@@ -94,6 +96,7 @@ namespace BibliotecaPablo
 
         private void TituloLB_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            FotoPB.Image = null;
             string titulo = TituloLB.SelectedItem.ToString();
             foreach (Libro libro in libros)
             {
@@ -103,6 +106,11 @@ namespace BibliotecaPablo
                     FotoPB.ImageLocation = libro.RutaFoto;
                 }
             }
+        }
+
+        private void Consulta_Click(object sender, EventArgs e)
+        {
+            FotoPB.Image = null;
         }
     }
 }

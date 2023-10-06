@@ -157,6 +157,7 @@
             this.Name = "Consulta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta";
+            this.Click += new System.EventHandler(this.Consulta_Click);
             ((System.ComponentModel.ISupportInitialize)(this.FotoPB)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
