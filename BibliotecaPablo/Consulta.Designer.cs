@@ -33,8 +33,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.FotoPB = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.AutorRB = new System.Windows.Forms.RadioButton();
             this.EditorialRB = new System.Windows.Forms.RadioButton();
+            this.AutorRB = new System.Windows.Forms.RadioButton();
             this.TituloLB = new System.Windows.Forms.ListBox();
             this.AutorEditorialLB = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.FotoPB)).BeginInit();
@@ -93,18 +93,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tipo de consulta";
             // 
-            // AutorRB
-            // 
-            this.AutorRB.AutoSize = true;
-            this.AutorRB.Location = new System.Drawing.Point(17, 25);
-            this.AutorRB.Name = "AutorRB";
-            this.AutorRB.Size = new System.Drawing.Size(66, 24);
-            this.AutorRB.TabIndex = 0;
-            this.AutorRB.TabStop = true;
-            this.AutorRB.Text = "Autor";
-            this.AutorRB.UseVisualStyleBackColor = true;
-            this.AutorRB.CheckedChanged += new System.EventHandler(this.AutorRB_CheckedChanged);
-            // 
             // EditorialRB
             // 
             this.EditorialRB.AutoSize = true;
@@ -117,6 +105,18 @@
             this.EditorialRB.UseVisualStyleBackColor = true;
             this.EditorialRB.CheckedChanged += new System.EventHandler(this.EditorialRB_CheckedChanged);
             // 
+            // AutorRB
+            // 
+            this.AutorRB.AutoSize = true;
+            this.AutorRB.Location = new System.Drawing.Point(17, 25);
+            this.AutorRB.Name = "AutorRB";
+            this.AutorRB.Size = new System.Drawing.Size(66, 24);
+            this.AutorRB.TabIndex = 0;
+            this.AutorRB.TabStop = true;
+            this.AutorRB.Text = "Autor";
+            this.AutorRB.UseVisualStyleBackColor = true;
+            this.AutorRB.CheckedChanged += new System.EventHandler(this.AutorRB_CheckedChanged);
+            // 
             // TituloLB
             // 
             this.TituloLB.FormattingEnabled = true;
@@ -125,6 +125,7 @@
             this.TituloLB.Name = "TituloLB";
             this.TituloLB.Size = new System.Drawing.Size(120, 184);
             this.TituloLB.TabIndex = 8;
+            this.TituloLB.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TituloLB_MouseDoubleClick);
             // 
             // AutorEditorialLB
             // 
