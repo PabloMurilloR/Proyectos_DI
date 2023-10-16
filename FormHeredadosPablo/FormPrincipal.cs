@@ -14,7 +14,7 @@ namespace FormHeredadosPablo
     public partial class FormPrincipal : Form
     {
 
-        ArrayList usuarios = new ArrayList();
+        SortedList usuarios = new SortedList();
         public FormPrincipal()
         {
             InitializeComponent();

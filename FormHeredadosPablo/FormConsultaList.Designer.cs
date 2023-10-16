@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConsultaList));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -35,6 +36,12 @@
             this.CiudadCB = new System.Windows.Forms.ComboBox();
             this.VistaCB = new System.Windows.Forms.ComboBox();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.NombreCH = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ApellidosCH = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.EmailCH = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ComentarioCH = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ImagenesPequenas = new System.Windows.Forms.ImageList(this.components);
+            this.ImagenesGrandes = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,6 +86,9 @@
             // VistaCB
             // 
             this.VistaCB.FormattingEnabled = true;
+            this.VistaCB.Items.AddRange(new object[] {
+            "Iconos pequeños",
+            "Iconos grandes"});
             this.VistaCB.Location = new System.Drawing.Point(554, 113);
             this.VistaCB.Name = "VistaCB";
             this.VistaCB.Size = new System.Drawing.Size(143, 21);
@@ -86,11 +96,49 @@
             // 
             // listView1
             // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.NombreCH,
+            this.ApellidosCH,
+            this.EmailCH,
+            this.ComentarioCH});
             this.listView1.Location = new System.Drawing.Point(25, 187);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(748, 251);
             this.listView1.TabIndex = 6;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // NombreCH
+            // 
+            this.NombreCH.Text = "Nombre";
+            this.NombreCH.Width = 111;
+            // 
+            // ApellidosCH
+            // 
+            this.ApellidosCH.Text = "Apellidos";
+            this.ApellidosCH.Width = 154;
+            // 
+            // EmailCH
+            // 
+            this.EmailCH.Text = "Email";
+            this.EmailCH.Width = 176;
+            // 
+            // ComentarioCH
+            // 
+            this.ComentarioCH.Text = "Comentario";
+            this.ComentarioCH.Width = 301;
+            // 
+            // ImagenesPequenas
+            // 
+            this.ImagenesPequenas.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.ImagenesPequenas.ImageSize = new System.Drawing.Size(16, 16);
+            this.ImagenesPequenas.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // ImagenesGrandes
+            // 
+            this.ImagenesGrandes.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.ImagenesGrandes.ImageSize = new System.Drawing.Size(16, 16);
+            this.ImagenesGrandes.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // FormConsultaList
             // 
@@ -125,5 +173,11 @@
         private System.Windows.Forms.ComboBox CiudadCB;
         private System.Windows.Forms.ComboBox VistaCB;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader NombreCH;
+        private System.Windows.Forms.ColumnHeader ApellidosCH;
+        private System.Windows.Forms.ColumnHeader EmailCH;
+        private System.Windows.Forms.ColumnHeader ComentarioCH;
+        private System.Windows.Forms.ImageList ImagenesPequenas;
+        private System.Windows.Forms.ImageList ImagenesGrandes;
     }
 }

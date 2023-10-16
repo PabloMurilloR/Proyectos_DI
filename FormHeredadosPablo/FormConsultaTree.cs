@@ -13,8 +13,8 @@ namespace FormHeredadosPablo
 {
     public partial class FormConsultaTree : FormPrincipal
     {
-        ArrayList usuarios;
-        public FormConsultaTree(ArrayList usuarios)
+        SortedList usuarios;
+        public FormConsultaTree(SortedList usuarios)
         {
             InitializeComponent();
             this.usuarios = usuarios;
