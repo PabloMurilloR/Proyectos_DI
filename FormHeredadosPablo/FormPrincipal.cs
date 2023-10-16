@@ -33,9 +33,12 @@ namespace FormHeredadosPablo
                 alta.Show();
             } else if (sender.ToString().Equals("Consulta lista"))
             {
-
+                FormConsultaList consultaList = new FormConsultaList(usuarios);
+                consultaList.Show();
             } else if (sender.ToString().Equals("Consulta tree"))
             {
+                FormConsultaTree consultaTree = new FormConsultaTree(usuarios);
+                consultaTree.Show();
 
             } else if (sender.ToString().Equals("Salir"))
             {

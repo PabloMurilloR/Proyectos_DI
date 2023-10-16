@@ -52,6 +52,18 @@
     <Compile Include="FormAlta.Designer.cs">
       <DependentUpon>FormAlta.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormConsultaList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConsultaList.Designer.cs">
+      <DependentUpon>FormConsultaList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormConsultaTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConsultaTree.Designer.cs">
+      <DependentUpon>FormConsultaTree.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +75,12 @@
     <Compile Include="Usuario.cs" />
     <EmbeddedResource Include="FormAlta.resx">
       <DependentUpon>FormAlta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConsultaList.resx">
+      <DependentUpon>FormConsultaList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConsultaTree.resx">
+      <DependentUpon>FormConsultaTree.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>

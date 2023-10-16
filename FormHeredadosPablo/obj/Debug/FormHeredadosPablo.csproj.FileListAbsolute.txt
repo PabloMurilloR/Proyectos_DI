@@ -8,3 +8,6 @@ C:\Users\alumno\Source\Repos\FormHeredadosPablo\obj\Debug\FormHeredadosPablo.csp
 C:\Users\alumno\Source\Repos\FormHeredadosPablo\obj\Debug\FormHeredadosPablo.csproj.CoreCompileInputs.cache
 C:\Users\alumno\Source\Repos\FormHeredadosPablo\obj\Debug\FormHeredadosPablo.exe
 C:\Users\alumno\Source\Repos\FormHeredadosPablo\obj\Debug\FormHeredadosPablo.pdb
+C:\Users\alumno\Source\Repos\FormHeredadosPablo\obj\Debug\FormHeredadosPablo.FormAlta.resources
+C:\Users\alumno\Source\Repos\FormHeredadosPablo\obj\Debug\FormHeredadosPablo.FormConsultaList.resources
+C:\Users\alumno\Source\Repos\FormHeredadosPablo\obj\Debug\FormHeredadosPablo.FormConsultaTree.resources
