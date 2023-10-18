@@ -14,7 +14,7 @@ namespace FormHeredadosPablo
     public partial class FormPrincipal : Form
     {
 
-        SortedList usuarios = new SortedList();
+        public static SortedList<string, Usuario> usuarios = new SortedList<string, Usuario>();
         public FormPrincipal()
         {
             InitializeComponent();
@@ -29,15 +29,15 @@ namespace FormHeredadosPablo
         {
             if (sender.ToString().Equals("Alta")) 
             {
-                FormAlta alta = new FormAlta(usuarios);
+                FormAlta alta = new FormAlta();
                 alta.Show();
             } else if (sender.ToString().Equals("Consulta lista"))
             {
-                FormConsultaList consultaList = new FormConsultaList(usuarios);
+                FormConsultaList consultaList = new FormConsultaList();
                 consultaList.Show();
             } else if (sender.ToString().Equals("Consulta tree"))
             {
-                FormConsultaTree consultaTree = new FormConsultaTree(usuarios);
+                FormConsultaTree consultaTree = new FormConsultaTree();
                 consultaTree.Show();
 
             } else if (sender.ToString().Equals("Salir"))

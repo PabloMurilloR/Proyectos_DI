@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FormHeredadosPablo
 {
-    class Usuario
+    public class Usuario
     {
         private string nombre;
         private string apellidos;
@@ -56,5 +56,11 @@ namespace FormHeredadosPablo
             set { esVip = value; }
         }
         #endregion
+
+        public string ToString()
+        {
+            return $"Nombre: {nombre}, Apellidos: {apellidos}, Ciudad: {ciudad}, Correo: {correo}, Comentario: {comentario}, EsVip: {esVip}";
+        }
+
     }
 }

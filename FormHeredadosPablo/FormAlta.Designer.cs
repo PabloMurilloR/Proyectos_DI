@@ -112,6 +112,7 @@
             this.ClientesLB.Name = "ClientesLB";
             this.ClientesLB.Size = new System.Drawing.Size(194, 251);
             this.ClientesLB.TabIndex = 3;
+            this.ClientesLB.SelectedIndexChanged += new System.EventHandler(this.ClientesLB_SelectedIndexChanged);
             // 
             // pictureBox1
             // 
