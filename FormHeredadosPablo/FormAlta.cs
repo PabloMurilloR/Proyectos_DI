@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Collections;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace FormHeredadosPablo
 {
     public partial class FormAlta : FormPrincipal
     {
-        ArrayList ArUsuarios; 
 
         public FormAlta()
         {
@@ -21,44 +15,53 @@ namespace FormHeredadosPablo
 
         private void OpcionesTS(object sender, EventArgs e)
         {
-            ArUsuarios = new ArrayList();
-            if (sender.ToString().Equals("Guardar"))
+            string opcion = sender.ToString();
+
+            switch (opcion)
             {
-                Usuario usuario = new Usuario(NombreTB.Text, ApellidosTB.Text, CiudadTB.Text, EmailTB.Text,
-                    ComentarioTB.Text, VIPCB.Checked);
-                if (NombreTB.Text.Equals("") || ApellidosTB.Text.Equals("") || CiudadTB.Text.Equals("") 
-                    || EmailTB.Text.Equals(""))
-                {
-                    MessageBox.Show("Rellene todos los campos");
-                }
-                else
-                {
-                    if (usuarios.ContainsKey(EmailTB.Text))
+                case "Guardar":
+                    Usuario usuario = new Usuario(NombreTB.Text, ApellidosTB.Text, CiudadTB.Text, EmailTB.Text,
+                        ComentarioTB.Text, VIPCB.Checked);
+                    if (NombreTB.Text.Equals("") || ApellidosTB.Text.Equals("") || CiudadTB.Text.Equals("")
+                        || EmailTB.Text.Equals(""))
                     {
-                        MessageBox.Show("Este correo ya esta en uso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        EmailTB.Text = "";
+                        MessageBox.Show("Rellene todos los campos");
                     }
                     else
                     {
-                        usuarios.Add(EmailTB.Text, usuario);
-                        limpiar();
-                        ArUsuarios.Add(usuario.Nombre + ", " + usuario.Correo);
-                        ClientesLB.Items.AddRange(ArUsuarios.ToArray());
+                        if (usuarios.ContainsKey(EmailTB.Text))
+                        {
+                            MessageBox.Show("Este correo ya está en uso", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            EmailTB.Text = "";
+                        }
+                        else
+                        {
+                            usuarios.Add(EmailTB.Text, usuario);
+                            limpiar();
+                            rellenarLB();
+                        }
                     }
-                }
-                
-                
-            }
-            else if (sender.ToString().Equals("Actualizar"))
-            {
-                MessageBox.Show("actualizar");
-            }
-            else if (sender.ToString().Equals("Borrar"))
-            {
-                limpiar();
+                    break;
+                case "Actualizar":
+
+                    break;
+                case "Borrar":
+                    if (ClientesLB.SelectedItem == null)
+                    {
+                        MessageBox.Show("No has selecionado nada", "Error");
+                    } else if(usuarios.ContainsKey(ClientesLB.SelectedItem.ToString()))
+                    {
+                        usuarios.Remove(EmailTB.Text);
+                        rellenarLB();
+                        limpiar();
+                    }
+                    break;
+                default:
+                    break;
             }
         }
-        public  void limpiar()
+        
+        public void limpiar()
         {
             NombreTB.Text = "";
             ApellidosTB.Text = "";
@@ -70,7 +73,7 @@ namespace FormHeredadosPablo
 
         private void ClientesLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string seleccion = ClientesLB.SelectedItem.ToString().Substring(ClientesLB.SelectedItem.ToString().IndexOf(',')+2);
+            string seleccion = ClientesLB.SelectedItem.ToString();
             Usuario usuario = usuarios[seleccion];
             NombreTB.Text = usuario.Nombre;
             ApellidosTB.Text = usuario.Apellidos;
@@ -78,6 +81,27 @@ namespace FormHeredadosPablo
             EmailTB.Text = usuario.Correo;
             ComentarioTB.Text = usuario.Comentario;
             VIPCB.Checked = usuario.EsVip;
+        }
+
+        private void FormAlta_DoubleClick(object sender, EventArgs e)
+        {
+            limpiar();
+        }
+
+        private void FormAlta_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        public void rellenarLB()
+        {
+
+            ClientesLB.Items.Clear();
+            foreach (KeyValuePair<String, Usuario> item in usuarios)
+            {
+                ClientesLB.Items.Add(item.Value.Correo);
+            }
+            
         }
     }
 }

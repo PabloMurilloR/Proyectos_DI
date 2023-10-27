@@ -17,5 +17,15 @@ namespace FormHeredadosPablo
         {
             InitializeComponent();
         }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = ImagenesPequenas.Images[0];
+        }
+
+        private void FormConsultaList_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

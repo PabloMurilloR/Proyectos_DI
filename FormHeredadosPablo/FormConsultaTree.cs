@@ -17,5 +17,10 @@ namespace FormHeredadosPablo
         {
             InitializeComponent();
         }
+
+        private void FormConsultaTree_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -1,49 +1,64 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FormHeredadosPablo
 {
     public partial class FormPrincipal : Form
     {
-
         public static SortedList<string, Usuario> usuarios = new SortedList<string, Usuario>();
+        public static bool VentanaAlta = false;
+        public static bool VentanaConsultaList = false;
+        public static bool VentanaConsultaTree = false;
+
         public FormPrincipal()
         {
-            InitializeComponent();
-        }
 
-        private void SalirToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Dispose();
+            InitializeComponent();
+            
         }
 
         private void OpcionMS(object sender, EventArgs e)
         {
-            if (sender.ToString().Equals("Alta")) 
+            string opcion = sender.ToString();
+            switch (opcion)
             {
-                FormAlta alta = new FormAlta();
-                alta.Show();
-            } else if (sender.ToString().Equals("Consulta lista"))
-            {
-                FormConsultaList consultaList = new FormConsultaList();
-                consultaList.Show();
-            } else if (sender.ToString().Equals("Consulta tree"))
-            {
-                FormConsultaTree consultaTree = new FormConsultaTree();
-                consultaTree.Show();
-
-            } else if (sender.ToString().Equals("Salir"))
-            {
-                Dispose();
+                case "Alta":
+                    MostrarFormulario(new FormAlta());
+                    break;
+                case "Consulta lista":
+                    MostrarFormulario(new FormConsultaList());
+                    break;
+                case "Consulta tree":
+                    MostrarFormulario(new FormConsultaTree());
+                    break;
+                case "Salir":
+                    Application.Exit();
+                    break;
+                default:
+                    break;
             }
+        }
+
+        private void MostrarFormulario(Form form)
+        {
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.GetType() == form.GetType())
+                {
+                    f.Show();
+                    this.Hide();
+                    return;
+                }
+            }
+
+            form.Show();
+            this.Hide();
+        }
+
+        private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

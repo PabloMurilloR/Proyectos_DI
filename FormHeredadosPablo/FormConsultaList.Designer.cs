@@ -54,6 +54,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.PictureBox1_Click);
             // 
             // label1
             // 
@@ -130,15 +131,17 @@
             // 
             // ImagenesPequenas
             // 
-            this.ImagenesPequenas.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.ImagenesPequenas.ImageSize = new System.Drawing.Size(16, 16);
+            this.ImagenesPequenas.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImagenesPequenas.ImageStream")));
             this.ImagenesPequenas.TransparentColor = System.Drawing.Color.Transparent;
+            this.ImagenesPequenas.Images.SetKeyName(0, "vip.png");
+            this.ImagenesPequenas.Images.SetKeyName(1, "usuario.png");
             // 
             // ImagenesGrandes
             // 
-            this.ImagenesGrandes.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.ImagenesGrandes.ImageSize = new System.Drawing.Size(16, 16);
+            this.ImagenesGrandes.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImagenesGrandes.ImageStream")));
             this.ImagenesGrandes.TransparentColor = System.Drawing.Color.Transparent;
+            this.ImagenesGrandes.Images.SetKeyName(0, "vip.png");
+            this.ImagenesGrandes.Images.SetKeyName(1, "usuario.png");
             // 
             // FormConsultaList
             // 
@@ -153,6 +156,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "FormConsultaList";
             this.Text = "FormConsultaList";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormConsultaList_FormClosed);
             this.Controls.SetChildIndex(this.pictureBox1, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
