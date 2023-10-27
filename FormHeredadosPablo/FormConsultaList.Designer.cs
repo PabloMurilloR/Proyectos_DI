@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConsultaList));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.CiudadCB = new System.Windows.Forms.ComboBox();
@@ -42,19 +41,9 @@
             this.ComentarioCH = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ImagenesPequenas = new System.Windows.Forms.ImageList(this.components);
             this.ImagenesGrandes = new System.Windows.Forms.ImageList(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(25, 45);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(156, 106);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.PictureBox1_Click);
             // 
             // label1
             // 
@@ -78,11 +67,13 @@
             // 
             // CiudadCB
             // 
+            this.CiudadCB.Cursor = System.Windows.Forms.Cursors.Default;
             this.CiudadCB.FormattingEnabled = true;
             this.CiudadCB.Location = new System.Drawing.Point(215, 113);
             this.CiudadCB.Name = "CiudadCB";
             this.CiudadCB.Size = new System.Drawing.Size(270, 21);
             this.CiudadCB.TabIndex = 4;
+            this.CiudadCB.SelectedIndexChanged += new System.EventHandler(this.CiudadCB_SelectedIndexChanged);
             // 
             // VistaCB
             // 
@@ -94,6 +85,7 @@
             this.VistaCB.Name = "VistaCB";
             this.VistaCB.Size = new System.Drawing.Size(143, 21);
             this.VistaCB.TabIndex = 5;
+            this.VistaCB.SelectedIndexChanged += new System.EventHandler(this.VistaCB_SelectedIndexChanged);
             // 
             // listView1
             // 
@@ -143,6 +135,17 @@
             this.ImagenesGrandes.Images.SetKeyName(0, "vip.png");
             this.ImagenesGrandes.Images.SetKeyName(1, "usuario.png");
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(25, 45);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(156, 106);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.PictureBox1_Click);
+            // 
             // FormConsultaList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,6 +159,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "FormConsultaList";
             this.Text = "FormConsultaList";
+            this.Activated += new System.EventHandler(this.FormConsultaList_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormConsultaList_FormClosed);
             this.Controls.SetChildIndex(this.pictureBox1, 0);
             this.Controls.SetChildIndex(this.label1, 0);

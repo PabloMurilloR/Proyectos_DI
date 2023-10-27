@@ -7,15 +7,11 @@ namespace FormHeredadosPablo
     public partial class FormPrincipal : Form
     {
         public static SortedList<string, Usuario> usuarios = new SortedList<string, Usuario>();
-        public static bool VentanaAlta = false;
-        public static bool VentanaConsultaList = false;
-        public static bool VentanaConsultaTree = false;
 
         public FormPrincipal()
         {
 
             InitializeComponent();
-            
         }
 
         private void OpcionMS(object sender, EventArgs e)
