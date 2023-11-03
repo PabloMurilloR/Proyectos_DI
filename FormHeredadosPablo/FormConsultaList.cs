@@ -18,11 +18,6 @@ namespace FormHeredadosPablo
             InitializeComponent();
         }
 
-        private void PictureBox1_Click(object sender, EventArgs e)
-        {
-            pictureBox1.Image = ImagenesPequenas.Images[0];
-        }
-
         private void FormConsultaList_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -53,6 +48,7 @@ namespace FormHeredadosPablo
         {
             ArrayList ciudades = new ArrayList();
             CiudadCB.Items.Clear();
+            int contador = 0;
 
             foreach (KeyValuePair<string, Usuario> item in usuarios)
             {
@@ -65,6 +61,7 @@ namespace FormHeredadosPablo
 
                     CiudadCB.Items.Add(item.Value.Ciudad);
                     ciudades.Add(item.Value.Ciudad);
+                    CiudadCB.SelectedIndex = 0;
                 }
                 
             }
@@ -72,6 +69,7 @@ namespace FormHeredadosPablo
             VistaCB.Items.Clear();
 
             VistaCB.Items.Add("Detalles");
+            VistaCB.SelectedIndex = 0;
             VistaCB.Items.Add("Iconos Grandes");
         }
 

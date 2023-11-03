@@ -153,7 +153,7 @@
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "mundo.jpg");
+            this.imageList1.Images.SetKeyName(0, "mundo.png");
             this.imageList1.Images.SetKeyName(1, "vip.png");
             this.imageList1.Images.SetKeyName(2, "usuario.png");
             // 
@@ -176,6 +176,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "FormConsultaTree";
             this.Text = "FormConsultaTree";
+            this.Activated += new System.EventHandler(this.FormConsultaTree_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormConsultaTree_FormClosed);
             this.Controls.SetChildIndex(this.pictureBox1, 0);
             this.Controls.SetChildIndex(this.treeView1, 0);

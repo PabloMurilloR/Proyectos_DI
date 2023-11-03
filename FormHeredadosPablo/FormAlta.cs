@@ -43,13 +43,26 @@ namespace FormHeredadosPablo
                     }
                     break;
                 case "Actualizar":
-
+                    if (ClientesLB.SelectedItem == null)
+                    {
+                        MessageBox.Show("No has selecionado nada", "Error");
+                    }
+                    else
+                    {
+                        usuarios.Remove(EmailTB.Text);
+                        Usuario usuario2 = new Usuario(NombreTB.Text, ApellidosTB.Text, CiudadTB.Text, EmailTB.Text,
+                        ComentarioTB.Text, VIPCB.Checked);
+                        usuarios.Add(EmailTB.Text, usuario2);
+                        limpiar();
+                        rellenarLB();
+                    }
                     break;
                 case "Borrar":
                     if (ClientesLB.SelectedItem == null)
                     {
                         MessageBox.Show("No has selecionado nada", "Error");
-                    } else if(usuarios.ContainsKey(ClientesLB.SelectedItem.ToString()))
+                    }
+                    else if (usuarios.ContainsKey(ClientesLB.SelectedItem.ToString()))
                     {
                         usuarios.Remove(EmailTB.Text);
                         rellenarLB();
@@ -60,7 +73,7 @@ namespace FormHeredadosPablo
                     break;
             }
         }
-        
+
         public void limpiar()
         {
             NombreTB.Text = "";
@@ -101,7 +114,7 @@ namespace FormHeredadosPablo
             {
                 ClientesLB.Items.Add(item.Value.Correo);
             }
-            
+
         }
     }
 }

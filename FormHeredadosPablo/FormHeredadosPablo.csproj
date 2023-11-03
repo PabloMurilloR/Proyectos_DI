@@ -118,13 +118,13 @@
     <None Include="img\borrar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\mundo.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="img\usuario.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="img\vip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="img\mundo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
