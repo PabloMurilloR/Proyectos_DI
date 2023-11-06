@@ -75,5 +75,20 @@ namespace FormHeredadosPablo
             EmailTV.Text = "";
             ComentarioTV.Text = "";
         }
+
+        private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            limpiar();
+            TreeNode node = e.Node;
+            Usuario u = usuarios[e.Node.Text];
+            if (e.Node.Level == 1)
+            {
+                NombreTV.Text = u.Nombre;
+                ApellidosTV.Text = u.Apellidos;
+                CiudadTV.Text = u.Ciudad;
+                EmailTV.Text = u.Correo;
+                ComentarioTV.Text = u.Comentario;
+            }
+        }
     }
 }
