@@ -55,6 +55,7 @@
             this.bloque20 = new System.Windows.Forms.PictureBox();
             this.bloque16 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bloque1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barra1)).BeginInit();
@@ -124,7 +125,7 @@
             // 
             this.pelota.BackColor = System.Drawing.Color.Transparent;
             this.pelota.Image = ((System.Drawing.Image)(resources.GetObject("pelota.Image")));
-            this.pelota.Location = new System.Drawing.Point(222, 398);
+            this.pelota.Location = new System.Drawing.Point(222, 397);
             this.pelota.Name = "pelota";
             this.pelota.Size = new System.Drawing.Size(20, 21);
             this.pelota.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -348,6 +349,10 @@
             this.pictureBox1.TabIndex = 59;
             this.pictureBox1.TabStop = false;
             // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.Timer2_Tick);
+            // 
             // Arkanoid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,7 +389,7 @@
             this.Name = "Arkanoid";
             this.Text = "Arkanoid";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Arkanoid_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.bloque1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barra1)).EndInit();
@@ -442,6 +447,7 @@
         private System.Windows.Forms.PictureBox bloque20;
         private System.Windows.Forms.PictureBox bloque16;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 
