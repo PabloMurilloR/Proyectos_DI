@@ -19,12 +19,20 @@ namespace ArkanoidPablo
         private int angulacion;
         private bool retomar = true;
         private int tecla;
+        public List<PictureBox> bloques;
 
         public Arkanoid()
         {
             InitializeComponent();
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer |
                 ControlStyles.ResizeRedraw | ControlStyles.UserPaint, true);
+            iniciarJuego();
+        }
+
+        public void iniciarJuego()
+        {
+            bloques = new List<PictureBox>();
+            CrearPictureBoxes();
         }
 
         private void Arkanoid_KeyDown(object sender, KeyEventArgs e)
@@ -88,6 +96,8 @@ namespace ArkanoidPablo
             }
             pelota.Invalidate();
             pelota.Location = new Point(posX, pelota.Location.Y - angulacion);
+
+            DetectarColisionConBarra();
         }
 
         public void reinicio()
@@ -111,9 +121,9 @@ namespace ArkanoidPablo
                     {
                         if (velocidad == 0)
                         {
-                            pelota.Location = new Point(pelota.Location.X + 5, pelota.Location.Y);
+                            pelota.Location = new Point(pelota.Location.X + 20, pelota.Location.Y);
                         }
-                        barra1.Location = new Point(barra1.Location.X + 5, barra1.Location.Y);
+                        barra1.Location = new Point(barra1.Location.X + 20, barra1.Location.Y);
                     }
                     
                     break;
@@ -123,9 +133,9 @@ namespace ArkanoidPablo
                     {
                         if (velocidad == 0)
                         {
-                            pelota.Location = new Point(pelota.Location.X - 5, pelota.Location.Y);
+                            pelota.Location = new Point(pelota.Location.X - 20, pelota.Location.Y);
                         }
-                        barra1.Location = new Point(barra1.Location.X - 5, barra1.Location.Y);
+                        barra1.Location = new Point(barra1.Location.X - 20, barra1.Location.Y);
                     }
                     break;
             }
@@ -133,6 +143,44 @@ namespace ArkanoidPablo
             timer2.Stop();
         }
 
-        
+        private void DetectarColisionConBarra()
+        {
+            if (pelota.Bounds.IntersectsWith(barra1.Bounds))
+            {
+                CambiarDireccionPelota();
+            }
+        }
+        private void CambiarDireccionPelota()
+        {
+            angulacion = -angulacion;
+        }
+
+        private void CrearPictureBoxes()
+        {
+            int filas = 4;
+            int posicionY = 12;
+
+            for (int i = 0; i < filas; i++)
+            {
+                int posicionX = 12;
+                int cajasPorFila = 1;
+
+                while (cajasPorFila <= 5)
+                {
+                    PictureBox cajaNueva = new PictureBox();
+                    cajaNueva.Size = new Size(82, 32);
+                    cajaNueva.Image = Properties.Resources.bAzulC;
+                    cajaNueva.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                    cajaNueva.Location = new Point(posicionX, posicionY);
+                    posicionX += 88;
+                    Controls.Add(cajaNueva);
+                    cajaNueva.Visible = true;
+                    bloques.Add(cajaNueva);
+                    cajasPorFila++;
+                }
+                posicionY += 38;
+            }
+        }
     }
 }
