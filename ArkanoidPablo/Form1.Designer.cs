@@ -30,21 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Arkanoid));
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timerPelota = new System.Windows.Forms.Timer(this.components);
             this.barra = new System.Windows.Forms.PictureBox();
             this.barra1 = new System.Windows.Forms.PictureBox();
             this.pelota = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timerBarra = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barra1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pelota)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // timer1
+            // timerPelota
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timerPelota.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // barra
             // 
@@ -89,9 +89,9 @@
             this.pictureBox1.TabIndex = 59;
             this.pictureBox1.TabStop = false;
             // 
-            // timer2
+            // timerBarra
             // 
-            this.timer2.Tick += new System.EventHandler(this.Timer2_Tick);
+            this.timerBarra.Tick += new System.EventHandler(this.Timer2_Tick);
             // 
             // Arkanoid
             // 
@@ -108,7 +108,6 @@
             this.MinimizeBox = false;
             this.Name = "Arkanoid";
             this.Text = "Arkanoid";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Arkanoid_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.barra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barra1)).EndInit();
@@ -120,14 +119,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timerPelota;
         private System.Windows.Forms.PictureBox player;
         private System.Windows.Forms.PictureBox ball;
         private System.Windows.Forms.PictureBox barra;
         private System.Windows.Forms.PictureBox barra1;
         private System.Windows.Forms.PictureBox pelota;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer timerBarra;
     }
 }
 

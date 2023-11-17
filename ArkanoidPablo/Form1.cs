@@ -15,8 +15,8 @@ namespace ArkanoidPablo
     public partial class Arkanoid : Form
     {
         int posX;
-        private int velocidad;
-        private int angulacion;
+        private int ejeX;
+        private int ejeY;
         private bool retomar = true;
         private int tecla;
         public List<PictureBox> bloques;
@@ -35,75 +35,85 @@ namespace ArkanoidPablo
             CrearPictureBoxes();
         }
 
+        /*public void reinicioJuego()
+        {
+            pelota.Location = new Point(ejeX, ejeY);
+
+            foreach (PictureBox bloque in bloques)
+            {
+                bloque.Location = ObtenerPosicionInicialBloque();
+                Controls.Add(bloque);
+            }
+        }*/
+
         private void Arkanoid_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Space && retomar)
             {
                 retomar = false;
-                angulacion = 5;
-                velocidad = 5;
-                timer1.Start();
+                ejeY = 5;
+                ejeX = 5;
+                timerPelota.Start();
                 IniciarMovimiento_Click();
 
             }
             else if (e.KeyCode == Keys.Right)
             {
-                timer2.Start();
+                timerBarra.Start();
                 tecla = 1;
             }
             else if (e.KeyCode == Keys.Left)
             {
-                timer2.Start();
+                timerBarra.Start();
                 tecla = 2;
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            else if (e.KeyCode == Keys.R)
+            {
+                iniciarJuego();
+            }
         }
 
         private void IniciarMovimiento_Click()
         {
             pelota.Location = new Point(pelota.Location.X, pelota.Location.Y);
-
         }
-
 
         private void timer1_Tick(object sender, EventArgs e)
         {
 
-            timer1.Interval = 10;
+            timerPelota.Interval = 10;
 
             posX = pelota.Location.X;
             int posY = pelota.Location.Y;
 
-            posX += velocidad;
+            posX += ejeX;
 
             if (posX + pelota.Width > this.Width || posX < 0)
             {
-                velocidad = -velocidad;
+                ejeX = -ejeX;
             }
             else if (posY >= 450)
             {
-                angulacion = 0;
-                velocidad = 0;
-                reinicio();
+                ejeY = 0;
+                ejeX = 0;
+                reinicioPelota();
             }
             else if (posY + pelota.Width > this.Width || posY < 0)
             {
-                angulacion = -angulacion;
+                ejeY = -ejeY;
             }
             pelota.Invalidate();
-            pelota.Location = new Point(posX, pelota.Location.Y - angulacion);
+            pelota.Location = new Point(posX, pelota.Location.Y - ejeY);
 
             DetectarColisionConBarra();
+            DetectarColisionConBloques();
+
         }
 
-        public void reinicio()
+        public void reinicioPelota()
         {
             posX = barra1.Location.X + (barra1.Width/2) - 10; 
-            timer1.Stop();
+            timerPelota.Stop();
             pelota.Invalidate();
             pelota.Location = new Point(posX, 397);
             retomar = true;
@@ -111,7 +121,7 @@ namespace ArkanoidPablo
 
         private void Timer2_Tick(object sender, EventArgs e)
         {
-            timer2.Interval = 10;
+            timerBarra.Interval = 10;
             barra1.Invalidate();
 
             switch (tecla)
@@ -119,7 +129,7 @@ namespace ArkanoidPablo
                 case 1:
                     if (barra1.Location.X + 97 < this.Width )
                     {
-                        if (velocidad == 0)
+                        if (ejeX == 0)
                         {
                             pelota.Location = new Point(pelota.Location.X + 20, pelota.Location.Y);
                         }
@@ -131,7 +141,7 @@ namespace ArkanoidPablo
                 case 2:
                     if (barra1.Location.X > 0)
                     {
-                        if (velocidad == 0)
+                        if (ejeX == 0)
                         {
                             pelota.Location = new Point(pelota.Location.X - 20, pelota.Location.Y);
                         }
@@ -140,7 +150,7 @@ namespace ArkanoidPablo
                     break;
             }
             
-            timer2.Stop();
+            timerBarra.Stop();
         }
 
         private void DetectarColisionConBarra()
@@ -150,9 +160,10 @@ namespace ArkanoidPablo
                 CambiarDireccionPelota();
             }
         }
+
         private void CambiarDireccionPelota()
         {
-            angulacion = -angulacion;
+            ejeY = -ejeY;
         }
 
         private void CrearPictureBoxes()
@@ -180,6 +191,20 @@ namespace ArkanoidPablo
                     cajasPorFila++;
                 }
                 posicionY += 38;
+            }
+        }
+
+        private void DetectarColisionConBloques()
+        {
+            foreach (PictureBox bloque in bloques)
+            {
+                if (pelota.Bounds.IntersectsWith(bloque.Bounds))
+                {
+                    bloques.Remove(bloque);
+                    Controls.Remove(bloque);
+                    ejeY = -ejeY;
+                    break;
+                }
             }
         }
     }
