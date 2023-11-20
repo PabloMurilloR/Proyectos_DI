@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
 using System.Windows.Forms;
 
 
@@ -14,6 +8,8 @@ namespace ArkanoidPablo
 {
     public partial class Arkanoid : Form
     {
+        int puntuacion;
+        int vidas;
         int posX;
         private int ejeX;
         private int ejeY;
@@ -31,20 +27,13 @@ namespace ArkanoidPablo
 
         public void iniciarJuego()
         {
+            vida1.Visible = true;
+            vida2.Visible = true;
+            vida3.Visible = true;
+            vidas = 4;
             bloques = new List<PictureBox>();
             CrearPictureBoxes();
         }
-
-        /*public void reinicioJuego()
-        {
-            pelota.Location = new Point(ejeX, ejeY);
-
-            foreach (PictureBox bloque in bloques)
-            {
-                bloque.Location = ObtenerPosicionInicialBloque();
-                Controls.Add(bloque);
-            }
-        }*/
 
         private void Arkanoid_KeyDown(object sender, KeyEventArgs e)
         {
@@ -59,17 +48,21 @@ namespace ArkanoidPablo
             }
             else if (e.KeyCode == Keys.Right)
             {
-                timerBarra.Start();
                 tecla = 1;
+                timerBarra.Start();
             }
             else if (e.KeyCode == Keys.Left)
             {
+                tecla = -1;
                 timerBarra.Start();
-                tecla = 2;
             }
             else if (e.KeyCode == Keys.R)
             {
-                iniciarJuego();
+                /*foreach (PictureBox bloque in bloques)
+                {
+                    Controls.Remove(bloque);
+                }
+                iniciarJuego();*/
             }
         }
 
@@ -112,6 +105,38 @@ namespace ArkanoidPablo
 
         public void reinicioPelota()
         {
+            vidas--;
+
+            if (vidas == 3)
+            {
+                vida1.Visible = false;
+            }
+            else if (vidas == 2)
+            {
+                vida2.Visible = false;
+            }
+            else if (vidas == 1)
+            {
+                vida3.Visible = false;
+            }
+            else if (vidas == 0)
+            {
+                DialogResult resultado = 
+                    MessageBox.Show("¿Desea reiniciar?", "Has perdido",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (resultado == DialogResult.Yes)
+                {
+                    foreach (PictureBox bloque in bloques)
+                    {
+                        Controls.Remove(bloque);
+                    }
+                    iniciarJuego();
+                }
+                else
+                {
+                    Dispose();
+                }
+            }
             posX = barra1.Location.X + (barra1.Width/2) - 10; 
             timerPelota.Stop();
             pelota.Invalidate();
@@ -126,31 +151,28 @@ namespace ArkanoidPablo
 
             switch (tecla)
             {
-                case 1:
-                    if (barra1.Location.X + 97 < this.Width )
-                    {
-                        if (ejeX == 0)
-                        {
-                            pelota.Location = new Point(pelota.Location.X + 20, pelota.Location.Y);
-                        }
-                        barra1.Location = new Point(barra1.Location.X + 20, barra1.Location.Y);
-                    }
-                    
-                    break;
-
-                case 2:
+                case -1:
                     if (barra1.Location.X > 0)
                     {
                         if (ejeX == 0)
                         {
-                            pelota.Location = new Point(pelota.Location.X - 20, pelota.Location.Y);
+                            pelota.Location = new Point(pelota.Location.X - 5, pelota.Location.Y);
                         }
-                        barra1.Location = new Point(barra1.Location.X - 20, barra1.Location.Y);
+                        barra1.Location = new Point(barra1.Location.X - 5, barra1.Location.Y);
                     }
                     break;
+                case 1:
+                    if (barra1.Location.X + 100 < this.Width )
+                    {
+                        if (ejeX == 0)
+                        {
+                            pelota.Location = new Point(pelota.Location.X + 5, pelota.Location.Y);
+                        }
+                        barra1.Location = new Point(barra1.Location.X + 5, barra1.Location.Y);
+                    }
+                    
+                    break;
             }
-            
-            timerBarra.Stop();
         }
 
         private void DetectarColisionConBarra()
@@ -196,16 +218,27 @@ namespace ArkanoidPablo
 
         private void DetectarColisionConBloques()
         {
+            List<PictureBox> bloquesAux = new List<PictureBox>();
+
             foreach (PictureBox bloque in bloques)
             {
                 if (pelota.Bounds.IntersectsWith(bloque.Bounds))
                 {
-                    bloques.Remove(bloque);
-                    Controls.Remove(bloque);
+                    bloquesAux.Add(bloque);
                     ejeY = -ejeY;
-                    break;
                 }
             }
+
+            foreach (PictureBox bloque in bloquesAux)
+            {
+                bloques.Remove(bloque);
+                Controls.Remove(bloque);
+            }
+        }
+
+        private void Arkanoid_KeyUp(object sender, KeyEventArgs e)
+        {
+            tecla = 0;
         }
     }
 }

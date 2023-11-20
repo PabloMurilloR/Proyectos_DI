@@ -36,10 +36,16 @@
             this.pelota = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timerBarra = new System.Windows.Forms.Timer(this.components);
+            this.vida3 = new System.Windows.Forms.PictureBox();
+            this.vida2 = new System.Windows.Forms.PictureBox();
+            this.vida1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.barra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barra1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pelota)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vida3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vida2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vida1)).BeginInit();
             this.SuspendLayout();
             // 
             // timerPelota
@@ -83,6 +89,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.pictureBox1.Location = new System.Drawing.Point(-1, 455);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(458, 37);
@@ -93,6 +100,39 @@
             // 
             this.timerBarra.Tick += new System.EventHandler(this.Timer2_Tick);
             // 
+            // vida3
+            // 
+            this.vida3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.vida3.Image = ((System.Drawing.Image)(resources.GetObject("vida3.Image")));
+            this.vida3.Location = new System.Drawing.Point(12, 462);
+            this.vida3.Name = "vida3";
+            this.vida3.Size = new System.Drawing.Size(25, 25);
+            this.vida3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.vida3.TabIndex = 60;
+            this.vida3.TabStop = false;
+            // 
+            // vida2
+            // 
+            this.vida2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.vida2.Image = ((System.Drawing.Image)(resources.GetObject("vida2.Image")));
+            this.vida2.Location = new System.Drawing.Point(43, 462);
+            this.vida2.Name = "vida2";
+            this.vida2.Size = new System.Drawing.Size(25, 25);
+            this.vida2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.vida2.TabIndex = 61;
+            this.vida2.TabStop = false;
+            // 
+            // vida1
+            // 
+            this.vida1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.vida1.Image = ((System.Drawing.Image)(resources.GetObject("vida1.Image")));
+            this.vida1.Location = new System.Drawing.Point(74, 462);
+            this.vida1.Name = "vida1";
+            this.vida1.Size = new System.Drawing.Size(25, 25);
+            this.vida1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.vida1.TabIndex = 62;
+            this.vida1.TabStop = false;
+            // 
             // Arkanoid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,6 +140,9 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(454, 491);
+            this.Controls.Add(this.vida1);
+            this.Controls.Add(this.vida2);
+            this.Controls.Add(this.vida3);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pelota);
             this.Controls.Add(this.barra1);
@@ -109,10 +152,14 @@
             this.Name = "Arkanoid";
             this.Text = "Arkanoid";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Arkanoid_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Arkanoid_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.barra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barra1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pelota)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vida3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vida2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vida1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -127,6 +174,9 @@
         private System.Windows.Forms.PictureBox pelota;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timerBarra;
+        private System.Windows.Forms.PictureBox vida3;
+        private System.Windows.Forms.PictureBox vida2;
+        private System.Windows.Forms.PictureBox vida1;
     }
 }
 
