@@ -39,6 +39,7 @@
             this.vida3 = new System.Windows.Forms.PictureBox();
             this.vida2 = new System.Windows.Forms.PictureBox();
             this.vida1 = new System.Windows.Forms.PictureBox();
+            this.bloquesImg = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barra1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pelota)).BeginInit();
@@ -133,6 +134,21 @@
             this.vida1.TabIndex = 62;
             this.vida1.TabStop = false;
             // 
+            // bloquesImg
+            // 
+            this.bloquesImg.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("bloquesImg.ImageStream")));
+            this.bloquesImg.TransparentColor = System.Drawing.Color.Transparent;
+            this.bloquesImg.Images.SetKeyName(0, "bAmarillo.png");
+            this.bloquesImg.Images.SetKeyName(1, "bAzulC.png");
+            this.bloquesImg.Images.SetKeyName(2, "bAzulO.png");
+            this.bloquesImg.Images.SetKeyName(3, "bGris.png");
+            this.bloquesImg.Images.SetKeyName(4, "bMarron.png");
+            this.bloquesImg.Images.SetKeyName(5, "bMorado.png");
+            this.bloquesImg.Images.SetKeyName(6, "bNaranja.png");
+            this.bloquesImg.Images.SetKeyName(7, "bRojo.png");
+            this.bloquesImg.Images.SetKeyName(8, "bVerdeC.png");
+            this.bloquesImg.Images.SetKeyName(9, "bVerdeO.png");
+            // 
             // Arkanoid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,6 +193,7 @@
         private System.Windows.Forms.PictureBox vida3;
         private System.Windows.Forms.PictureBox vida2;
         private System.Windows.Forms.PictureBox vida1;
+        private System.Windows.Forms.ImageList bloquesImg;
     }
 }
 

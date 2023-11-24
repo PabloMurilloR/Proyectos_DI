@@ -16,6 +16,7 @@ namespace ArkanoidPablo
         private bool retomar = true;
         private int tecla;
         public List<PictureBox> bloques;
+        private Random random = new Random();
 
         public Arkanoid()
         {
@@ -55,14 +56,6 @@ namespace ArkanoidPablo
             {
                 tecla = -1;
                 timerBarra.Start();
-            }
-            else if (e.KeyCode == Keys.R)
-            {
-                /*foreach (PictureBox bloque in bloques)
-                {
-                    Controls.Remove(bloque);
-                }
-                iniciarJuego();*/
             }
         }
 
@@ -190,6 +183,7 @@ namespace ArkanoidPablo
 
         private void CrearPictureBoxes()
         {
+
             int filas = 4;
             int posicionY = 12;
 
@@ -200,16 +194,22 @@ namespace ArkanoidPablo
 
                 while (cajasPorFila <= 5)
                 {
-                    PictureBox cajaNueva = new PictureBox();
-                    cajaNueva.Size = new Size(82, 32);
-                    cajaNueva.Image = Properties.Resources.bAzulC;
-                    cajaNueva.SizeMode = PictureBoxSizeMode.StretchImage;
+                    PictureBox bloqueNuevo = new PictureBox();
 
-                    cajaNueva.Location = new Point(posicionX, posicionY);
+                    int numeroRandom = random.Next(0, bloquesImg.Images.Count);
+
+                    bloqueNuevo.Image = bloquesImg.Images[numeroRandom];
+
+                    bloqueNuevo.Size = new Size(82, 32);
+                    bloqueNuevo.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                    bloqueNuevo.Location = new Point(posicionX, posicionY);
                     posicionX += 88;
-                    Controls.Add(cajaNueva);
-                    cajaNueva.Visible = true;
-                    bloques.Add(cajaNueva);
+
+                    Controls.Add(bloqueNuevo);
+                    bloqueNuevo.Visible = true;
+                    bloques.Add(bloqueNuevo);
+
                     cajasPorFila++;
                 }
                 posicionY += 38;
