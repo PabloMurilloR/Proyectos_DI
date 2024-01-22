@@ -1,0 +1,12 @@
+C:\Users\alumno\Source\Repos\Recuperacion1EvaPablo\obj\Debug\Recuperacion1EvaPablo.csprojAssemblyReference.cache
+C:\Users\alumno\Source\Repos\Recuperacion1EvaPablo\obj\Debug\Recuperacion1EvaPablo.TiendaAlimentacion.resources
+C:\Users\alumno\Source\Repos\Recuperacion1EvaPablo\obj\Debug\Recuperacion1EvaPablo.Properties.Resources.resources
+C:\Users\alumno\Source\Repos\Recuperacion1EvaPablo\obj\Debug\Recuperacion1EvaPablo.csproj.GenerateResource.cache
+C:\Users\alumno\Source\Repos\Recuperacion1EvaPablo\obj\Debug\Recuperacion1EvaPablo.csproj.CoreCompileInputs.cache
+C:\Users\alumno\Source\Repos\Recuperacion1EvaPablo\bin\Debug\Recuperacion1EvaPablo.exe.config
+C:\Users\alumno\Source\Repos\Recuperacion1EvaPablo\bin\Debug\Recuperacion1EvaPablo.exe
+C:\Users\alumno\Source\Repos\Recuperacion1EvaPablo\bin\Debug\Recuperacion1EvaPablo.pdb
+C:\Users\alumno\Source\Repos\Recuperacion1EvaPablo\obj\Debug\Recuperacion1EvaPablo.exe
+C:\Users\alumno\Source\Repos\Recuperacion1EvaPablo\obj\Debug\Recuperacion1EvaPablo.pdb
+C:\Users\alumno\Source\Repos\Recuperacion1EvaPablo\obj\Debug\Recuperacion1EvaPablo.ProductosF.resources
+C:\Users\alumno\Source\Repos\Recuperacion1EvaPablo\obj\Debug\Recuperacion1EvaPablo.ModificarTree.resources
