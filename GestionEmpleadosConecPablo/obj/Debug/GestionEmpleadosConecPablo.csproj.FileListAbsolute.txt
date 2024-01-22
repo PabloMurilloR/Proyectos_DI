@@ -1,0 +1,10 @@
+C:\Users\alumno\Source\Repos\GestionEmpleadosConecPablo\bin\Debug\GestionEmpleadosConecPablo.exe.config
+C:\Users\alumno\Source\Repos\GestionEmpleadosConecPablo\bin\Debug\GestionEmpleadosConecPablo.exe
+C:\Users\alumno\Source\Repos\GestionEmpleadosConecPablo\bin\Debug\GestionEmpleadosConecPablo.pdb
+C:\Users\alumno\Source\Repos\GestionEmpleadosConecPablo\obj\Debug\GestionEmpleadosConecPablo.csprojAssemblyReference.cache
+C:\Users\alumno\Source\Repos\GestionEmpleadosConecPablo\obj\Debug\GestionEmpleadosConecPablo.Form1.resources
+C:\Users\alumno\Source\Repos\GestionEmpleadosConecPablo\obj\Debug\GestionEmpleadosConecPablo.Properties.Resources.resources
+C:\Users\alumno\Source\Repos\GestionEmpleadosConecPablo\obj\Debug\GestionEmpleadosConecPablo.csproj.GenerateResource.cache
+C:\Users\alumno\Source\Repos\GestionEmpleadosConecPablo\obj\Debug\GestionEmpleadosConecPablo.csproj.CoreCompileInputs.cache
+C:\Users\alumno\Source\Repos\GestionEmpleadosConecPablo\obj\Debug\GestionEmpleadosConecPablo.exe
+C:\Users\alumno\Source\Repos\GestionEmpleadosConecPablo\obj\Debug\GestionEmpleadosConecPablo.pdb
