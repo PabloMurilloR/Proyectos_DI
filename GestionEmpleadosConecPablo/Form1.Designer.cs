@@ -38,11 +38,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.ApellidosTB = new System.Windows.Forms.TextBox();
+            this.OficioTB = new System.Windows.Forms.TextBox();
+            this.SalarioTB = new System.Windows.Forms.TextBox();
+            this.FechaAltaTB = new System.Windows.Forms.TextBox();
+            this.ComisionTB = new System.Windows.Forms.TextBox();
             this.AbajoB = new System.Windows.Forms.Button();
             this.LimpiarB = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -109,6 +109,7 @@
             this.ArribaB.Size = new System.Drawing.Size(52, 52);
             this.ArribaB.TabIndex = 5;
             this.ArribaB.UseVisualStyleBackColor = true;
+            this.ArribaB.Click += new System.EventHandler(this.ArribaB_Click);
             // 
             // label3
             // 
@@ -160,40 +161,40 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "Comisión";
             // 
-            // textBox1
+            // ApellidosTB
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 325);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 20);
-            this.textBox1.TabIndex = 17;
+            this.ApellidosTB.Location = new System.Drawing.Point(13, 325);
+            this.ApellidosTB.Name = "ApellidosTB";
+            this.ApellidosTB.Size = new System.Drawing.Size(121, 20);
+            this.ApellidosTB.TabIndex = 17;
             // 
-            // textBox2
+            // OficioTB
             // 
-            this.textBox2.Location = new System.Drawing.Point(140, 325);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 20);
-            this.textBox2.TabIndex = 18;
+            this.OficioTB.Location = new System.Drawing.Point(140, 325);
+            this.OficioTB.Name = "OficioTB";
+            this.OficioTB.Size = new System.Drawing.Size(121, 20);
+            this.OficioTB.TabIndex = 18;
             // 
-            // textBox3
+            // SalarioTB
             // 
-            this.textBox3.Location = new System.Drawing.Point(267, 325);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(121, 20);
-            this.textBox3.TabIndex = 19;
+            this.SalarioTB.Location = new System.Drawing.Point(267, 325);
+            this.SalarioTB.Name = "SalarioTB";
+            this.SalarioTB.Size = new System.Drawing.Size(121, 20);
+            this.SalarioTB.TabIndex = 19;
             // 
-            // textBox4
+            // FechaAltaTB
             // 
-            this.textBox4.Location = new System.Drawing.Point(394, 325);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(121, 20);
-            this.textBox4.TabIndex = 20;
+            this.FechaAltaTB.Location = new System.Drawing.Point(394, 325);
+            this.FechaAltaTB.Name = "FechaAltaTB";
+            this.FechaAltaTB.Size = new System.Drawing.Size(121, 20);
+            this.FechaAltaTB.TabIndex = 20;
             // 
-            // textBox5
+            // ComisionTB
             // 
-            this.textBox5.Location = new System.Drawing.Point(521, 325);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(121, 20);
-            this.textBox5.TabIndex = 21;
+            this.ComisionTB.Location = new System.Drawing.Point(521, 325);
+            this.ComisionTB.Name = "ComisionTB";
+            this.ComisionTB.Size = new System.Drawing.Size(121, 20);
+            this.ComisionTB.TabIndex = 21;
             // 
             // AbajoB
             // 
@@ -205,6 +206,7 @@
             this.AbajoB.Size = new System.Drawing.Size(52, 52);
             this.AbajoB.TabIndex = 22;
             this.AbajoB.UseVisualStyleBackColor = true;
+            this.AbajoB.Click += new System.EventHandler(this.AbajoB_Click);
             // 
             // LimpiarB
             // 
@@ -215,6 +217,7 @@
             this.LimpiarB.Size = new System.Drawing.Size(45, 45);
             this.LimpiarB.TabIndex = 23;
             this.LimpiarB.UseVisualStyleBackColor = true;
+            this.LimpiarB.Click += new System.EventHandler(this.LimpiarB_Click);
             // 
             // label8
             // 
@@ -255,6 +258,7 @@
             this.BusquedaB.Text = "Buscar";
             this.BusquedaB.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BusquedaB.UseVisualStyleBackColor = true;
+            this.BusquedaB.Click += new System.EventHandler(this.BusquedaB_Click);
             // 
             // GuardarB
             // 
@@ -312,6 +316,7 @@
             this.LocalizacionLB.Name = "LocalizacionLB";
             this.LocalizacionLB.Size = new System.Drawing.Size(193, 95);
             this.LocalizacionLB.TabIndex = 35;
+            this.LocalizacionLB.SelectedIndexChanged += new System.EventHandler(this.LocalizacionLB_SelectedIndexChanged);
             // 
             // NumLB
             // 
@@ -329,6 +334,7 @@
             this.ApellidosLB.Name = "ApellidosLB";
             this.ApellidosLB.Size = new System.Drawing.Size(121, 121);
             this.ApellidosLB.TabIndex = 37;
+            this.ApellidosLB.SelectedIndexChanged += new System.EventHandler(this.ApellidosLB_SelectedIndexChanged);
             // 
             // OficioLB
             // 
@@ -337,6 +343,7 @@
             this.OficioLB.Name = "OficioLB";
             this.OficioLB.Size = new System.Drawing.Size(121, 121);
             this.OficioLB.TabIndex = 38;
+            this.OficioLB.SelectedIndexChanged += new System.EventHandler(this.OficioLB_SelectedIndexChanged);
             // 
             // SalarioLB
             // 
@@ -345,6 +352,7 @@
             this.SalarioLB.Name = "SalarioLB";
             this.SalarioLB.Size = new System.Drawing.Size(121, 121);
             this.SalarioLB.TabIndex = 39;
+            this.SalarioLB.SelectedIndexChanged += new System.EventHandler(this.SalarioLB_SelectedIndexChanged);
             // 
             // FechaAltaLB
             // 
@@ -353,6 +361,7 @@
             this.FechaAltaLB.Name = "FechaAltaLB";
             this.FechaAltaLB.Size = new System.Drawing.Size(121, 121);
             this.FechaAltaLB.TabIndex = 40;
+            this.FechaAltaLB.SelectedIndexChanged += new System.EventHandler(this.FechaAltaLB_SelectedIndexChanged);
             // 
             // ComisionLB
             // 
@@ -361,10 +370,17 @@
             this.ComisionLB.Name = "ComisionLB";
             this.ComisionLB.Size = new System.Drawing.Size(121, 121);
             this.ComisionLB.TabIndex = 41;
+            this.ComisionLB.SelectedIndexChanged += new System.EventHandler(this.ComisionLB_SelectedIndexChanged);
             // 
             // BuscarLB
             // 
             this.BuscarLB.FormattingEnabled = true;
+            this.BuscarLB.Items.AddRange(new object[] {
+            "Apellidos",
+            "Oficio",
+            "Salario",
+            "Fecha Alta",
+            "Comisión"});
             this.BuscarLB.Location = new System.Drawing.Point(74, 432);
             this.BuscarLB.Name = "BuscarLB";
             this.BuscarLB.Size = new System.Drawing.Size(121, 95);
@@ -394,11 +410,11 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.LimpiarB);
             this.Controls.Add(this.AbajoB);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.ComisionTB);
+            this.Controls.Add(this.FechaAltaTB);
+            this.Controls.Add(this.SalarioTB);
+            this.Controls.Add(this.OficioTB);
+            this.Controls.Add(this.ApellidosTB);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -427,11 +443,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox ApellidosTB;
+        private System.Windows.Forms.TextBox OficioTB;
+        private System.Windows.Forms.TextBox SalarioTB;
+        private System.Windows.Forms.TextBox FechaAltaTB;
+        private System.Windows.Forms.TextBox ComisionTB;
         private System.Windows.Forms.Button AbajoB;
         private System.Windows.Forms.Button LimpiarB;
         private System.Windows.Forms.Label label8;
