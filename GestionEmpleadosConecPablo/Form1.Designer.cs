@@ -41,7 +41,6 @@
             this.ApellidosTB = new System.Windows.Forms.TextBox();
             this.OficioTB = new System.Windows.Forms.TextBox();
             this.SalarioTB = new System.Windows.Forms.TextBox();
-            this.FechaAltaTB = new System.Windows.Forms.TextBox();
             this.ComisionTB = new System.Windows.Forms.TextBox();
             this.AbajoB = new System.Windows.Forms.Button();
             this.LimpiarB = new System.Windows.Forms.Button();
@@ -49,9 +48,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.BusquedaTB = new System.Windows.Forms.TextBox();
             this.BusquedaB = new System.Windows.Forms.Button();
-            this.GuardarB = new System.Windows.Forms.Button();
+            this.ModificarB = new System.Windows.Forms.Button();
             this.BorrarB = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.NuevoB = new System.Windows.Forms.Button();
             this.DepartamentoLB = new System.Windows.Forms.ListBox();
             this.LocalizacionLB = new System.Windows.Forms.ListBox();
             this.NumLB = new System.Windows.Forms.ListBox();
@@ -61,6 +60,8 @@
             this.FechaAltaLB = new System.Windows.Forms.ListBox();
             this.ComisionLB = new System.Windows.Forms.ListBox();
             this.BuscarLB = new System.Windows.Forms.ListBox();
+            this.EmpNumLB = new System.Windows.Forms.ListBox();
+            this.FechaAltaDT = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -182,13 +183,6 @@
             this.SalarioTB.Size = new System.Drawing.Size(121, 20);
             this.SalarioTB.TabIndex = 19;
             // 
-            // FechaAltaTB
-            // 
-            this.FechaAltaTB.Location = new System.Drawing.Point(394, 325);
-            this.FechaAltaTB.Name = "FechaAltaTB";
-            this.FechaAltaTB.Size = new System.Drawing.Size(121, 20);
-            this.FechaAltaTB.TabIndex = 20;
-            // 
             // ComisionTB
             // 
             this.ComisionTB.Location = new System.Drawing.Point(521, 325);
@@ -260,18 +254,19 @@
             this.BusquedaB.UseVisualStyleBackColor = true;
             this.BusquedaB.Click += new System.EventHandler(this.BusquedaB_Click);
             // 
-            // GuardarB
+            // ModificarB
             // 
-            this.GuardarB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GuardarB.Image = ((System.Drawing.Image)(resources.GetObject("GuardarB.Image")));
-            this.GuardarB.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.GuardarB.Location = new System.Drawing.Point(730, 303);
-            this.GuardarB.Name = "GuardarB";
-            this.GuardarB.Size = new System.Drawing.Size(58, 75);
-            this.GuardarB.TabIndex = 30;
-            this.GuardarB.Text = "Modificar";
-            this.GuardarB.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.GuardarB.UseVisualStyleBackColor = true;
+            this.ModificarB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ModificarB.Image = ((System.Drawing.Image)(resources.GetObject("ModificarB.Image")));
+            this.ModificarB.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ModificarB.Location = new System.Drawing.Point(730, 303);
+            this.ModificarB.Name = "ModificarB";
+            this.ModificarB.Size = new System.Drawing.Size(58, 75);
+            this.ModificarB.TabIndex = 30;
+            this.ModificarB.Text = "Modificar";
+            this.ModificarB.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.ModificarB.UseVisualStyleBackColor = true;
+            this.ModificarB.Click += new System.EventHandler(this.ModificarB_Click);
             // 
             // BorrarB
             // 
@@ -286,19 +281,21 @@
             this.BorrarB.Text = "Borrar";
             this.BorrarB.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BorrarB.UseVisualStyleBackColor = true;
+            this.BorrarB.Click += new System.EventHandler(this.BorrarB_Click);
             // 
-            // button2
+            // NuevoB
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(730, 465);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(58, 75);
-            this.button2.TabIndex = 32;
-            this.button2.Text = "Nuevo";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = true;
+            this.NuevoB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.NuevoB.Image = ((System.Drawing.Image)(resources.GetObject("NuevoB.Image")));
+            this.NuevoB.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.NuevoB.Location = new System.Drawing.Point(730, 465);
+            this.NuevoB.Name = "NuevoB";
+            this.NuevoB.Size = new System.Drawing.Size(58, 75);
+            this.NuevoB.TabIndex = 32;
+            this.NuevoB.Text = "Nuevo";
+            this.NuevoB.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.NuevoB.UseVisualStyleBackColor = true;
+            this.NuevoB.Click += new System.EventHandler(this.NuevoB_Click);
             // 
             // DepartamentoLB
             // 
@@ -386,12 +383,30 @@
             this.BuscarLB.Size = new System.Drawing.Size(121, 95);
             this.BuscarLB.TabIndex = 42;
             // 
+            // EmpNumLB
+            // 
+            this.EmpNumLB.FormattingEnabled = true;
+            this.EmpNumLB.Location = new System.Drawing.Point(498, 432);
+            this.EmpNumLB.Name = "EmpNumLB";
+            this.EmpNumLB.Size = new System.Drawing.Size(50, 95);
+            this.EmpNumLB.TabIndex = 43;
+            this.EmpNumLB.Visible = false;
+            // 
+            // FechaAltaDT
+            // 
+            this.FechaAltaDT.Location = new System.Drawing.Point(394, 324);
+            this.FechaAltaDT.Name = "FechaAltaDT";
+            this.FechaAltaDT.Size = new System.Drawing.Size(121, 20);
+            this.FechaAltaDT.TabIndex = 44;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 549);
+            this.Controls.Add(this.FechaAltaDT);
+            this.Controls.Add(this.EmpNumLB);
             this.Controls.Add(this.BuscarLB);
             this.Controls.Add(this.ComisionLB);
             this.Controls.Add(this.FechaAltaLB);
@@ -401,9 +416,9 @@
             this.Controls.Add(this.NumLB);
             this.Controls.Add(this.LocalizacionLB);
             this.Controls.Add(this.DepartamentoLB);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.NuevoB);
             this.Controls.Add(this.BorrarB);
-            this.Controls.Add(this.GuardarB);
+            this.Controls.Add(this.ModificarB);
             this.Controls.Add(this.BusquedaB);
             this.Controls.Add(this.BusquedaTB);
             this.Controls.Add(this.label9);
@@ -411,7 +426,6 @@
             this.Controls.Add(this.LimpiarB);
             this.Controls.Add(this.AbajoB);
             this.Controls.Add(this.ComisionTB);
-            this.Controls.Add(this.FechaAltaTB);
             this.Controls.Add(this.SalarioTB);
             this.Controls.Add(this.OficioTB);
             this.Controls.Add(this.ApellidosTB);
@@ -446,7 +460,6 @@
         private System.Windows.Forms.TextBox ApellidosTB;
         private System.Windows.Forms.TextBox OficioTB;
         private System.Windows.Forms.TextBox SalarioTB;
-        private System.Windows.Forms.TextBox FechaAltaTB;
         private System.Windows.Forms.TextBox ComisionTB;
         private System.Windows.Forms.Button AbajoB;
         private System.Windows.Forms.Button LimpiarB;
@@ -454,9 +467,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox BusquedaTB;
         private System.Windows.Forms.Button BusquedaB;
-        private System.Windows.Forms.Button GuardarB;
+        private System.Windows.Forms.Button ModificarB;
         private System.Windows.Forms.Button BorrarB;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button NuevoB;
         private System.Windows.Forms.ListBox DepartamentoLB;
         private System.Windows.Forms.ListBox LocalizacionLB;
         private System.Windows.Forms.ListBox NumLB;
@@ -466,6 +479,8 @@
         private System.Windows.Forms.ListBox FechaAltaLB;
         private System.Windows.Forms.ListBox ComisionLB;
         private System.Windows.Forms.ListBox BuscarLB;
+        private System.Windows.Forms.ListBox EmpNumLB;
+        private System.Windows.Forms.DateTimePicker FechaAltaDT;
     }
 }
 

@@ -49,38 +49,22 @@ namespace GestionEmpleadosConecPablo
 
         private void DepartamentoLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            #region ListBox tabla Departamentos
             this.NumLB.SelectedIndex = this.DepartamentoLB.SelectedIndex;
             this.LocalizacionLB.SelectedIndex = this.DepartamentoLB.SelectedIndex;
-            #endregion
 
-            #region ListBox de informacion del empleado
-            limpiarLB();
-
-            cmd = ctn.CreateCommand();
-            cmd.CommandText = "select * from EMPLE where DEPT_NO ="+ NumLB.SelectedItem;
-
-            lector = cmd.ExecuteReader();
-            while (lector.Read())
-            {
-                this.ApellidosLB.Items.Add(lector.GetValue(1));
-                this.OficioLB.Items.Add(lector.GetString(2));
-                this.SalarioLB.Items.Add(lector.GetValue(3));
-                this.FechaAltaLB.Items.Add(lector.GetValue(4));
-                this.ComisionLB.Items.Add(lector.GetValue(5));
-            }
-            lector.Close();
-            #endregion
+            rellenarUsuarios();
         }
 
         private void LocalizacionLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.NumLB.SelectedIndex = this.LocalizacionLB.SelectedIndex;
             this.DepartamentoLB.SelectedIndex = this.LocalizacionLB.SelectedIndex;
+
         }
 
         public void limpiarLB()
         {
+            EmpNumLB.Items.Clear();
             ApellidosLB.Items.Clear();
             OficioLB.Items.Clear();
             SalarioLB.Items.Clear();
@@ -90,6 +74,7 @@ namespace GestionEmpleadosConecPablo
 
         private void ApellidosLB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.EmpNumLB.SelectedIndex = this.ApellidosLB.SelectedIndex;
             this.OficioLB.SelectedIndex = this.ApellidosLB.SelectedIndex;
             this.SalarioLB.SelectedIndex = this.ApellidosLB.SelectedIndex;
             this.FechaAltaLB.SelectedIndex = this.ApellidosLB.SelectedIndex;
@@ -133,6 +118,7 @@ namespace GestionEmpleadosConecPablo
 
         private void OficioLB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.EmpNumLB.SelectedIndex = this.OficioLB.SelectedIndex;
             this.ApellidosLB.SelectedIndex = this.OficioLB.SelectedIndex;
             this.SalarioLB.SelectedIndex = this.OficioLB.SelectedIndex;
             this.FechaAltaLB.SelectedIndex = this.OficioLB.SelectedIndex;
@@ -143,6 +129,7 @@ namespace GestionEmpleadosConecPablo
 
         private void SalarioLB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.EmpNumLB.SelectedIndex = this.SalarioLB.SelectedIndex;
             this.ApellidosLB.SelectedIndex = this.SalarioLB.SelectedIndex;
             this.OficioLB.SelectedIndex = this.SalarioLB.SelectedIndex;
             this.FechaAltaLB.SelectedIndex = this.SalarioLB.SelectedIndex;
@@ -153,16 +140,18 @@ namespace GestionEmpleadosConecPablo
 
         private void FechaAltaLB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.EmpNumLB.SelectedIndex = this.FechaAltaLB.SelectedIndex;
             this.ApellidosLB.SelectedIndex = this.FechaAltaLB.SelectedIndex;
             this.OficioLB.SelectedIndex = this.FechaAltaLB.SelectedIndex;
             this.SalarioLB.SelectedIndex = this.FechaAltaLB.SelectedIndex;
             this.ComisionLB.SelectedIndex = this.FechaAltaLB.SelectedIndex;
 
-            this.FechaAltaTB.Text = FechaAltaLB.SelectedItem.ToString();
+            this.FechaAltaDT.Value = DateTime.Parse(FechaAltaLB.Text.ToString());
         }
 
         private void ComisionLB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.EmpNumLB.SelectedIndex = this.ComisionLB.SelectedIndex;
             this.ApellidosLB.SelectedIndex = this.ComisionLB.SelectedIndex;
             this.OficioLB.SelectedIndex = this.ComisionLB.SelectedIndex;
             this.SalarioLB.SelectedIndex = this.ComisionLB.SelectedIndex;
@@ -176,11 +165,12 @@ namespace GestionEmpleadosConecPablo
             limpiarLB();
 
             cmd = ctn.CreateCommand();
-            cmd.CommandText = "select * from EMPLE where "+ ;
+            cmd.CommandText = "select * from EMPLE where " ;
 
             lector = cmd.ExecuteReader();
             while (lector.Read())
             {
+                this.EmpNumLB.Items.Add(lector.GetValue(0));
                 this.ApellidosLB.Items.Add(lector.GetValue(1));
                 this.OficioLB.Items.Add(lector.GetString(2));
                 this.SalarioLB.Items.Add(lector.GetValue(3));
@@ -190,13 +180,132 @@ namespace GestionEmpleadosConecPablo
             lector.Close();
         }
 
-        private void LimpiarB_Click(object sender, EventArgs e)
+        private void limpiar()
         {
             ApellidosTB.Text = "";
             OficioTB.Text = "";
             SalarioTB.Text = "";
-            FechaAltaTB.Text = "";
+            FechaAltaDT.Value = DateTime.Today;
             ComisionTB.Text = "";
+        }
+
+        private void BorrarB_Click(object sender, EventArgs e)
+        {
+            cmd = ctn.CreateCommand();
+            cmd.CommandText = "DELETE FROM EMPLE WHERE emp_no = "+ EmpNumLB.SelectedItem.ToString();
+
+            lector = cmd.ExecuteReader();
+            lector.Close();
+            rellenarUsuarios();
+            limpiar();
+        }
+
+        private void ModificarB_Click(object sender, EventArgs e)
+        {
+            cmd = ctn.CreateCommand();
+            cmd.CommandText = "UPDATE EMPLE SET APELLIDO = '" + ApellidosTB.Text + "', OFICIO = '" + OficioTB.Text +
+                "', SALARIO = "+ Int32.Parse(SalarioTB.Text) + ", COMISION = "
+                + Int32.Parse(ComisionTB.Text)+" WHERE EMP_NO = "+ EmpNumLB.SelectedItem.ToString() ;
+
+            lector = cmd.ExecuteReader();
+            lector.Close();
+            rellenarUsuarios();
+            
+
+        }
+
+        private void NuevoB_Click(object sender, EventArgs e)
+        {
+            ctn.Open();
+
+            cmd.CommandText = "select * From emple";
+            lector = cmd.ExecuteReader();
+            bool usuarioExistente = false;
+
+            while (lector.Read())
+            {
+                string fechaTiempo = FechaAltaDT.Value.Year.ToString() + "/" + FechaAltaDT.Value.Year.ToString() + "/" + FechaAltaDT.Value.Year.ToString();
+                string fecha = lector.GetValue(4).ToString().Substring(0, lector.GetValue(4).ToString().IndexOf(' '));
+                if ((lector.GetString(1).Equals(ApellidosLB.Text.ToString().ToUpper())) && fecha.Equals(fechaTiempo))
+                {
+                    usuarioExistente = false;
+                }
+
+            }
+
+            lector.Close();
+            ctn.Close();
+
+            if (!usuarioExistente)
+            { 
+                Random random = new Random();
+
+                int numero = 0;
+                bool encontrado = false;
+
+                do
+                {
+                    ctn.Open();
+
+                    cmd.CommandText = "select EMP_NO From EMPLE";
+                    lector = cmd.ExecuteReader();
+                    numero = random.Next(10000);
+
+                    while (lector.Read())
+                    {
+                        if (Convert.ToInt32(lector.GetValue(0)) == numero)
+                        {
+                            encontrado = true;
+                        }
+
+                    }
+
+                    lector.Close();
+                    ctn.Close();
+                }
+                while (encontrado == true);
+
+                ctn.Open();
+
+                cmd.CommandText = "INSERT into EMPLE (EMP_NO,APELLIDO,OFICIO,SALARIO,FECHA_ALT,COMISION,DEPT_NO) values('"
+                    + numero + "','" + ApellidosTB.Text.ToUpper().ToString() + "','" +
+                    OficioTB.Text.ToUpper().ToString() + "','" + Int32.Parse(SalarioTB.Text.ToString())
+                    + "','" + System.DateTime.Now + "','" +
+                    Int32.Parse(ComisionTB.Text.ToString()) + "','" + "30" + "');";
+
+
+                MessageBox.Show(cmd.ExecuteNonQuery().ToString());
+                ctn.Close();
+            }
+
+            lector.Close();
+
+            rellenarUsuarios();
+        }
+
+        private void rellenarUsuarios()
+        {
+            limpiarLB();
+
+            cmd = ctn.CreateCommand();
+            cmd.CommandText = "select * from EMPLE where DEPT_NO =" + NumLB.SelectedItem;
+
+            lector = cmd.ExecuteReader();
+            while (lector.Read())
+            {
+                this.EmpNumLB.Items.Add(lector.GetValue(0));
+                this.ApellidosLB.Items.Add(lector.GetValue(1));
+                this.OficioLB.Items.Add(lector.GetString(2));
+                this.SalarioLB.Items.Add(lector.GetValue(5));
+                this.FechaAltaLB.Items.Add(lector.GetValue(4));
+                this.ComisionLB.Items.Add(lector.GetValue(6));
+            }
+            lector.Close();
+        }
+
+        private void LimpiarB_Click(object sender, EventArgs e)
+        {
+            limpiar();
         }
     }
 }
