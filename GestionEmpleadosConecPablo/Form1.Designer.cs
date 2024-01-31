@@ -62,6 +62,7 @@
             this.BuscarLB = new System.Windows.Forms.ListBox();
             this.EmpNumLB = new System.Windows.Forms.ListBox();
             this.FechaAltaDT = new System.Windows.Forms.DateTimePicker();
+            this.EmpNumTB = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -376,7 +377,6 @@
             "Apellidos",
             "Oficio",
             "Salario",
-            "Fecha Alta",
             "Comisión"});
             this.BuscarLB.Location = new System.Drawing.Point(74, 432);
             this.BuscarLB.Name = "BuscarLB";
@@ -388,7 +388,7 @@
             this.EmpNumLB.FormattingEnabled = true;
             this.EmpNumLB.Location = new System.Drawing.Point(498, 432);
             this.EmpNumLB.Name = "EmpNumLB";
-            this.EmpNumLB.Size = new System.Drawing.Size(50, 95);
+            this.EmpNumLB.Size = new System.Drawing.Size(69, 95);
             this.EmpNumLB.TabIndex = 43;
             this.EmpNumLB.Visible = false;
             // 
@@ -399,12 +399,20 @@
             this.FechaAltaDT.Size = new System.Drawing.Size(121, 20);
             this.FechaAltaDT.TabIndex = 44;
             // 
+            // EmpNumTB
+            // 
+            this.EmpNumTB.Location = new System.Drawing.Point(573, 469);
+            this.EmpNumTB.Name = "EmpNumTB";
+            this.EmpNumTB.Size = new System.Drawing.Size(100, 20);
+            this.EmpNumTB.TabIndex = 45;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 549);
+            this.Controls.Add(this.EmpNumTB);
             this.Controls.Add(this.FechaAltaDT);
             this.Controls.Add(this.EmpNumLB);
             this.Controls.Add(this.BuscarLB);
@@ -481,6 +489,7 @@
         private System.Windows.Forms.ListBox BuscarLB;
         private System.Windows.Forms.ListBox EmpNumLB;
         private System.Windows.Forms.DateTimePicker FechaAltaDT;
+        private System.Windows.Forms.TextBox EmpNumTB;
     }
 }
 

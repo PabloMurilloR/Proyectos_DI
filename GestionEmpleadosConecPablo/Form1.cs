@@ -24,6 +24,7 @@ namespace GestionEmpleadosConecPablo
 
         private void SalirB_Click(object sender, EventArgs e)
         {
+            ctn.Close();
             Application.Exit();
         }
 
@@ -164,20 +165,55 @@ namespace GestionEmpleadosConecPablo
         {
             limpiarLB();
 
-            cmd = ctn.CreateCommand();
-            cmd.CommandText = "select * from EMPLE where " ;
+            string consulta = "";
+            bool numero = false;
+
+            switch (BuscarLB.SelectedItem.ToString())
+            {
+                case "Apellidos":
+                    consulta = "APELLIDO";
+                    break;
+                case "Oficio":
+                    consulta = "OFICIO";
+                    break;
+                case "Salario":
+                    consulta = "SALARIO";
+                    numero = true;
+                    break;
+                case "Comisión":
+                    consulta = "COMISION";
+                    numero = true;
+                    break;
+            }
+
+            if (!numero)
+            {
+                cmd.CommandText = "select * From emple where " + consulta + "='" + BusquedaTB.Text.ToString() + "'";
+            } else
+            {
+                cmd.CommandText = "select * From emple where " + consulta + "=" + BusquedaTB.Text.ToString();
+            }
 
             lector = cmd.ExecuteReader();
+
             while (lector.Read())
             {
-                this.EmpNumLB.Items.Add(lector.GetValue(0));
-                this.ApellidosLB.Items.Add(lector.GetValue(1));
-                this.OficioLB.Items.Add(lector.GetString(2));
-                this.SalarioLB.Items.Add(lector.GetValue(3));
-                this.FechaAltaLB.Items.Add(lector.GetValue(4));
-                this.ComisionLB.Items.Add(lector.GetValue(5));
+                ApellidosTB.Text = lector.GetString(1);
+                ApellidosLB.Items.Add(lector.GetString(1));
+                OficioTB.Text = lector.GetString(2);
+                OficioLB.Items.Add(lector.GetString(2));
+                SalarioTB.Text = Convert.ToString(lector.GetValue(5));
+                SalarioLB.Items.Add(lector.GetValue(5));
+                FechaAltaDT.Value = lector.GetDateTime(4);
+                FechaAltaLB.Items.Add(lector.GetValue(4));
+                ComisionTB.Text = Convert.ToString((lector.GetValue(6)));
+                ComisionLB.Items.Add(lector.GetValue(6));
+                EmpNumTB.Text = Convert.ToString(lector.GetValue(0));
+                EmpNumLB.Items.Add(lector.GetValue(0));
             }
+
             lector.Close();
+
         }
 
         private void limpiar()
@@ -187,6 +223,7 @@ namespace GestionEmpleadosConecPablo
             SalarioTB.Text = "";
             FechaAltaDT.Value = DateTime.Today;
             ComisionTB.Text = "";
+            EmpNumTB.Text = "";
         }
 
         private void BorrarB_Click(object sender, EventArgs e)
@@ -216,8 +253,6 @@ namespace GestionEmpleadosConecPablo
 
         private void NuevoB_Click(object sender, EventArgs e)
         {
-            ctn.Open();
-
             cmd.CommandText = "select * From emple";
             lector = cmd.ExecuteReader();
             bool usuarioExistente = false;
@@ -234,7 +269,6 @@ namespace GestionEmpleadosConecPablo
             }
 
             lector.Close();
-            ctn.Close();
 
             if (!usuarioExistente)
             { 
@@ -245,7 +279,6 @@ namespace GestionEmpleadosConecPablo
 
                 do
                 {
-                    ctn.Open();
 
                     cmd.CommandText = "select EMP_NO From EMPLE";
                     lector = cmd.ExecuteReader();
@@ -261,11 +294,8 @@ namespace GestionEmpleadosConecPablo
                     }
 
                     lector.Close();
-                    ctn.Close();
                 }
                 while (encontrado == true);
-
-                ctn.Open();
 
                 cmd.CommandText = "INSERT into EMPLE (EMP_NO,APELLIDO,OFICIO,SALARIO,FECHA_ALT,COMISION,DEPT_NO) values('"
                     + numero + "','" + ApellidosTB.Text.ToUpper().ToString() + "','" +
@@ -273,9 +303,7 @@ namespace GestionEmpleadosConecPablo
                     + "','" + System.DateTime.Now + "','" +
                     Int32.Parse(ComisionTB.Text.ToString()) + "','" + "30" + "');";
 
-
                 MessageBox.Show(cmd.ExecuteNonQuery().ToString());
-                ctn.Close();
             }
 
             lector.Close();
