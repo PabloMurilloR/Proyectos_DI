@@ -16,7 +16,6 @@ namespace GestionEmpleadosDesconecPablo
         private OleDbConnection ctn;
         IDbCommand cmd;
 
-
         public Form1()
         {
             InitializeComponent();
