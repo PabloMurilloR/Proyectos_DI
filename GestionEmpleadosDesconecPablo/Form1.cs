@@ -14,7 +14,11 @@ namespace GestionEmpleadosDesconecPablo
     public partial class Form1 : Form
     {
         private OleDbConnection ctn;
-        IDbCommand cmd;
+        OleDbCommand cmd;
+        DataSet ds;
+        OleDbDataAdapter daDepart;
+        OleDbDataAdapter daEmple;
+        OleDbCommandBuilder cb;
 
         public Form1()
         {
@@ -23,7 +27,6 @@ namespace GestionEmpleadosDesconecPablo
 
         private void SalirB_Click(object sender, EventArgs e)
         {
-            ctn.Close();
             Application.Exit();
         }
 
@@ -33,18 +36,42 @@ namespace GestionEmpleadosDesconecPablo
             ctn.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=C:\\Temp\\Emple.mdb";
             ctn.Open();
 
-            cmd = ctn.CreateCommand();
-            cmd.CommandText = "select * from DEPART";
+            ds = new DataSet();
 
-            lector = cmd.ExecuteReader();
-            while (lector.Read())
+            #region Tabla Depart
+            cmd = new OleDbCommand();
+            cmd.Connection = ctn;
+            cmd.CommandText = "SELECT * from DEPART";
+
+            daDepart = new OleDbDataAdapter();
+            cb = new OleDbCommandBuilder(daDepart);
+            daDepart.SelectCommand = cmd;
+
+            daDepart.Fill(ds, "DEPART");
+
+            DataTable tabla = ds.Tables["DEPART"];
+
+            foreach (DataRow registro in tabla.Rows)
             {
-                this.NumLB.Items.Add(lector.GetValue(0));
-                this.DepartamentoLB.Items.Add(lector.GetString(1));
-                this.LocalizacionLB.Items.Add(lector.GetString(2));
+                this.NumLB.Items.Add(registro["DEPT_NO"]);
+                this.DepartamentoLB.Items.Add(registro["DNOMBRE"]);
+                this.LocalizacionLB.Items.Add(registro["LOC"]);
             }
-            lector.Close();
+            #endregion
 
+            #region Tabla Emple
+            cmd = new OleDbCommand();
+            cmd.Connection = ctn;
+            cmd.CommandText = "SELECT * from EMPLE";
+
+            daEmple = new OleDbDataAdapter();
+            cb = new OleDbCommandBuilder(daEmple);
+            daEmple.SelectCommand = cmd;
+
+            daEmple.Fill(ds, "EMPLE");
+            #endregion
+
+            ctn.Close();
         }
 
         private void DepartamentoLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -164,37 +191,27 @@ namespace GestionEmpleadosDesconecPablo
         {
             limpiarLB();
 
-            string consulta = "";
-            bool numero = false;
+            int consulta = 0;
 
             switch (BuscarLB.SelectedItem.ToString())
             {
                 case "Apellidos":
-                    consulta = "APELLIDO";
+                    consulta = 1;
                     break;
                 case "Oficio":
-                    consulta = "OFICIO";
+                    consulta = 2;
                     break;
                 case "Salario":
-                    consulta = "SALARIO";
-                    numero = true;
+                    consulta = 5;
                     break;
                 case "Comisión":
-                    consulta = "COMISION";
-                    numero = true;
+                    consulta = 6;
                     break;
             }
 
-            if (!numero)
-            {
-                cmd.CommandText = "select * From emple where " + consulta + "='" + BusquedaTB.Text.ToString() + "'";
-            }
-            else
-            {
-                cmd.CommandText = "select * From emple where " + consulta + "=" + BusquedaTB.Text.ToString();
-            }
 
-            lector = cmd.ExecuteReader();
+
+            /*lector = cmd.ExecuteReader();
 
             while (lector.Read())
             {
@@ -212,7 +229,7 @@ namespace GestionEmpleadosDesconecPablo
                 EmpNumLB.Items.Add(lector.GetValue(0));
             }
 
-            lector.Close();
+            lector.Close();*/
 
         }
 
@@ -228,24 +245,56 @@ namespace GestionEmpleadosDesconecPablo
 
         private void BorrarB_Click(object sender, EventArgs e)
         {
-            cmd = ctn.CreateCommand();
-            cmd.CommandText = "DELETE FROM EMPLE WHERE emp_no = " + EmpNumLB.SelectedItem.ToString();
+            DataTable tabla = ds.Tables["EMPLE"];
+            int indexaux = -1;
+            int index = 0;
+            foreach (DataRow registro in tabla.Rows)
+            {
+                indexaux++;
+                if (registro["EMP_NO"].Equals(this.EmpNumLB.SelectedItem))
+                {
+                    index = indexaux;
+                }
+            }
 
-            lector = cmd.ExecuteReader();
-            lector.Close();
+            DataRow reg = tabla.Rows[index];
+            reg.Delete();
+
+            tabla.AcceptChanges();
+            ds.AcceptChanges();
+
             rellenarUsuarios();
             limpiar();
         }
 
         private void ModificarB_Click(object sender, EventArgs e)
         {
-            cmd = ctn.CreateCommand();
-            cmd.CommandText = "UPDATE EMPLE SET APELLIDO = '" + ApellidosTB.Text + "', OFICIO = '" + OficioTB.Text +
-                "', SALARIO = " + Int32.Parse(SalarioTB.Text) + ", COMISION = "
-                + Int32.Parse(ComisionTB.Text) + " WHERE EMP_NO = " + EmpNumLB.SelectedItem.ToString();
+            DataTable tabla = ds.Tables["EMPLE"];
+            int indexaux = -1;
+            int index = 0;
+            foreach (DataRow registro in tabla.Rows)
+            {
+                indexaux++;
+                if (registro["EMP_NO"].Equals(this.EmpNumLB.SelectedItem))
+                {
+                    index = indexaux;
+                }
+            }
 
-            lector = cmd.ExecuteReader();
-            lector.Close();
+            DataRow reg = tabla.Rows[index];
+
+            reg.BeginEdit();
+
+            reg["APELLIDO"] = ApellidosTB.Text;
+            reg["OFICIO"] = OficioTB.Text;
+            reg["SALARIO"] = SalarioTB.Text;
+            reg["COMISION"] = ComisionTB.Text;
+
+            reg.EndEdit();
+
+            daEmple.Update(ds, "EMPLE");
+            ds.AcceptChanges();
+
             rellenarUsuarios();
 
 
@@ -253,22 +302,21 @@ namespace GestionEmpleadosDesconecPablo
 
         private void NuevoB_Click(object sender, EventArgs e)
         {
-            cmd.CommandText = "select * From emple";
-            lector = cmd.ExecuteReader();
+            DataTable tabla = ds.Tables["EMPLE"];
+
             bool usuarioExistente = false;
 
-            while (lector.Read())
+            foreach (DataRow registro in tabla.Rows)
             {
-                string fechaTiempo = FechaAltaDT.Value.Year.ToString() + "/" + FechaAltaDT.Value.Year.ToString() + "/" + FechaAltaDT.Value.Year.ToString();
-                string fecha = lector.GetValue(4).ToString().Substring(0, lector.GetValue(4).ToString().IndexOf(' '));
-                if ((lector.GetString(1).Equals(ApellidosLB.Text.ToString().ToUpper())) && fecha.Equals(fechaTiempo))
+                string fechaTiempo = FechaAltaDT.Value.Year.ToString() + "/" + FechaAltaDT.Value.Year.ToString()
+                    + "/" + FechaAltaDT.Value.Year.ToString();
+                string fecha = registro["FECHA_ALT"].ToString().Substring(0, registro["FECHA_ALT"].ToString().IndexOf(' '));
+                if (registro["APELLIDO"].Equals(ApellidosLB.Text.ToString().ToUpper()) && fecha.Equals(fechaTiempo))
                 {
-                    usuarioExistente = false;
+                    usuarioExistente = true;
                 }
 
             }
-
-            lector.Close();
 
             if (!usuarioExistente)
             {
@@ -279,56 +327,57 @@ namespace GestionEmpleadosDesconecPablo
 
                 do
                 {
-
-                    cmd.CommandText = "select EMP_NO From EMPLE";
-                    lector = cmd.ExecuteReader();
                     numero = random.Next(10000);
 
-                    while (lector.Read())
+                    foreach (DataRow registro in tabla.Rows)
                     {
-                        if (Convert.ToInt32(lector.GetValue(0)) == numero)
+                        if (Convert.ToInt32(registro["EMP_NO"]) == numero)
                         {
                             encontrado = true;
                         }
 
                     }
-
-                    lector.Close();
                 }
                 while (encontrado == true);
 
-                cmd.CommandText = "INSERT into EMPLE (EMP_NO,APELLIDO,OFICIO,SALARIO,FECHA_ALT,COMISION,DEPT_NO) values('"
-                    + numero + "','" + ApellidosTB.Text.ToUpper().ToString() + "','" +
-                    OficioTB.Text.ToUpper().ToString() + "','" + Int32.Parse(SalarioTB.Text.ToString())
-                    + "','" + System.DateTime.Now + "','" +
-                    Int32.Parse(ComisionTB.Text.ToString()) + "','" + "30" + "');";
+                DataRow reg = tabla.NewRow();
 
-                MessageBox.Show(cmd.ExecuteNonQuery().ToString());
+                reg["EMP_NO"] = numero;
+                reg["APELLIDO"] = ApellidosTB.Text;
+                reg["OFICIO"] = OficioTB.Text;
+                reg["DIR"] = 0;
+                reg["FECHA_ALT"] = FechaAltaDT.Value;
+                reg["SALARIO"] = SalarioTB.Text;
+                reg["COMISION"] = ComisionTB.Text;
+                reg["DEPT_NO"] = 40;
+
+                tabla.Rows.Add(reg);
+
+                tabla.AcceptChanges();
+                ds.AcceptChanges();
+                limpiar();
+
             }
-
-            lector.Close();
-
-            rellenarUsuarios();
         }
 
         private void rellenarUsuarios()
         {
             limpiarLB();
 
-            cmd = ctn.CreateCommand();
-            cmd.CommandText = "select * from EMPLE where DEPT_NO =" + NumLB.SelectedItem;
+            DataTable tabla = ds.Tables["EMPLE"];
 
-            lector = cmd.ExecuteReader();
-            while (lector.Read())
+            foreach (DataRow registro in tabla.Rows)
             {
-                this.EmpNumLB.Items.Add(lector.GetValue(0));
-                this.ApellidosLB.Items.Add(lector.GetValue(1));
-                this.OficioLB.Items.Add(lector.GetString(2));
-                this.SalarioLB.Items.Add(lector.GetValue(5));
-                this.FechaAltaLB.Items.Add(lector.GetValue(4));
-                this.ComisionLB.Items.Add(lector.GetValue(6));
+                if (registro["DEPT_NO"].Equals(this.NumLB.SelectedItem))
+                {
+                    this.EmpNumLB.Items.Add(registro["EMP_NO"]);
+                    this.ApellidosLB.Items.Add(registro["APELLIDO"]);
+                    this.OficioLB.Items.Add(registro["OFICIO"]);
+                    this.SalarioLB.Items.Add(registro["SALARIO"]);
+                    this.FechaAltaLB.Items.Add(registro["FECHA_ALT"]);
+                    this.ComisionLB.Items.Add(registro["COMISION"]);
+                }
             }
-            lector.Close();
         }
 
         private void LimpiarB_Click(object sender, EventArgs e)
