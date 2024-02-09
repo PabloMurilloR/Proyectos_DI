@@ -323,6 +323,7 @@
             this.NumLB.Name = "NumLB";
             this.NumLB.Size = new System.Drawing.Size(158, 95);
             this.NumLB.TabIndex = 36;
+            this.NumLB.Visible = false;
             // 
             // ApellidosLB
             // 

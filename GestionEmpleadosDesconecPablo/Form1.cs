@@ -254,13 +254,14 @@ namespace GestionEmpleadosDesconecPablo
                 if (registro["EMP_NO"].Equals(this.EmpNumLB.SelectedItem))
                 {
                     index = indexaux;
+
                 }
             }
 
             DataRow reg = tabla.Rows[index];
             reg.Delete();
 
-            tabla.AcceptChanges();
+            daEmple.Update(ds, "EMPLE");
             ds.AcceptChanges();
 
             rellenarUsuarios();
@@ -353,7 +354,7 @@ namespace GestionEmpleadosDesconecPablo
 
                 tabla.Rows.Add(reg);
 
-                tabla.AcceptChanges();
+                daEmple.Update(ds, "EMPLE");
                 ds.AcceptChanges();
                 limpiar();
 
