@@ -13,7 +13,7 @@ namespace GestionEmpleadosDesconecPablo
 {
     public partial class Form1 : Form
     {
-        private OleDbConnection ctn;
+        OleDbConnection ctn;
         OleDbCommand cmd;
         DataSet ds;
         OleDbDataAdapter daDepart;
@@ -23,15 +23,7 @@ namespace GestionEmpleadosDesconecPablo
         public Form1()
         {
             InitializeComponent();
-        }
 
-        private void SalirB_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
             ctn = new OleDbConnection();
             ctn.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source=C:\\Temp\\Emple.mdb";
             ctn.Open();
@@ -72,6 +64,17 @@ namespace GestionEmpleadosDesconecPablo
             #endregion
 
             ctn.Close();
+        }
+
+        private void SalirB_Click(object sender, EventArgs e)
+        {
+            daEmple.Update(ds, "EMPLE");
+            ds.AcceptChanges();
+            Application.Exit();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        { 
         }
 
         private void DepartamentoLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -192,6 +195,7 @@ namespace GestionEmpleadosDesconecPablo
             limpiarLB();
 
             int consulta = 0;
+            bool numero = false;
 
             switch (BuscarLB.SelectedItem.ToString())
             {
@@ -203,33 +207,47 @@ namespace GestionEmpleadosDesconecPablo
                     break;
                 case "Salario":
                     consulta = 5;
+                    numero = true;
+                    break;
+                case "Fecha Alta":
+                    consulta = 4;
                     break;
                 case "Comisión":
                     consulta = 6;
+                    numero = true;
                     break;
             }
 
+            limpiarLB();
 
+            DataTable tabla = ds.Tables["EMPLE"];
 
-            /*lector = cmd.ExecuteReader();
-
-            while (lector.Read())
+            foreach (DataRow registro in tabla.Rows)
             {
-                ApellidosTB.Text = lector.GetString(1);
-                ApellidosLB.Items.Add(lector.GetString(1));
-                OficioTB.Text = lector.GetString(2);
-                OficioLB.Items.Add(lector.GetString(2));
-                SalarioTB.Text = Convert.ToString(lector.GetValue(5));
-                SalarioLB.Items.Add(lector.GetValue(5));
-                FechaAltaDT.Value = lector.GetDateTime(4);
-                FechaAltaLB.Items.Add(lector.GetValue(4));
-                ComisionTB.Text = Convert.ToString((lector.GetValue(6)));
-                ComisionLB.Items.Add(lector.GetValue(6));
-                EmpNumTB.Text = Convert.ToString(lector.GetValue(0));
-                EmpNumLB.Items.Add(lector.GetValue(0));
-            }
+                if (registro[consulta].Equals(BusquedaTB.Text.ToString()))
+                {
 
-            lector.Close();*/
+                    ApellidosTB.Text = Convert.ToString(registro["APELLIDO"]);
+                    OficioTB.Text = Convert.ToString(registro["OFICIO"]);
+                    SalarioTB.Text = Convert.ToString(registro["SALARIO"]);
+                    FechaAltaDT.Value = Convert.ToDateTime(registro["FECHA_ALT"]);
+                    ComisionTB.Text = Convert.ToString(registro["COMISION"]);
+                    EmpNumTB.Text = Convert.ToString(registro["EMP_NO"]);
+
+                    this.ApellidosLB.Items.Add(registro["APELLIDO"]);
+                    ApellidosLB.SelectedItem = true;
+                    this.OficioLB.Items.Add(registro["OFICIO"]);
+                    OficioLB.SelectedItem = true;
+                    this.SalarioLB.Items.Add(registro["SALARIO"]);
+                    SalarioLB.SelectedItem = true;
+                    this.FechaAltaLB.Items.Add(registro["FECHA_ALT"]);
+                    FechaAltaLB.SelectedItem = true;
+                    this.ComisionLB.Items.Add(registro["COMISION"]);
+                    ComisionLB.SelectedItem = true;
+                    this.EmpNumLB.Items.Add(registro["EMP_NO"]);
+                    EmpNumLB.SelectedItem = true;
+                }
+            }
 
         }
 
@@ -261,9 +279,6 @@ namespace GestionEmpleadosDesconecPablo
             DataRow reg = tabla.Rows[index];
             reg.Delete();
 
-            daEmple.Update(ds, "EMPLE");
-            ds.AcceptChanges();
-
             rellenarUsuarios();
             limpiar();
         }
@@ -288,17 +303,13 @@ namespace GestionEmpleadosDesconecPablo
 
             reg["APELLIDO"] = ApellidosTB.Text;
             reg["OFICIO"] = OficioTB.Text;
-            reg["SALARIO"] = SalarioTB.Text;
-            reg["COMISION"] = ComisionTB.Text;
+            reg["SALARIO"] = Int32.Parse(SalarioTB.Text);
+            reg["COMISION"] = Int32.Parse(ComisionTB.Text);
+            reg["FECHA_ALT"] = FechaAltaDT.Value;
 
             reg.EndEdit();
 
-            daEmple.Update(ds, "EMPLE");
-            ds.AcceptChanges();
-
             rellenarUsuarios();
-
-
         }
 
         private void NuevoB_Click(object sender, EventArgs e)
@@ -348,16 +359,13 @@ namespace GestionEmpleadosDesconecPablo
                 reg["OFICIO"] = OficioTB.Text;
                 reg["DIR"] = 0;
                 reg["FECHA_ALT"] = FechaAltaDT.Value;
-                reg["SALARIO"] = SalarioTB.Text;
-                reg["COMISION"] = ComisionTB.Text;
+                reg["SALARIO"] = Int32.Parse(SalarioTB.Text);
+                reg["COMISION"] = Int32.Parse(ComisionTB.Text);
                 reg["DEPT_NO"] = 40;
 
                 tabla.Rows.Add(reg);
 
-                daEmple.Update(ds, "EMPLE");
-                ds.AcceptChanges();
                 limpiar();
-
             }
         }
 
@@ -383,6 +391,8 @@ namespace GestionEmpleadosDesconecPablo
 
         private void LimpiarB_Click(object sender, EventArgs e)
         {
+            daEmple.Update(ds, "EMPLE");
+            ds.AcceptChanges();
             limpiar();
         }
     }
