@@ -8,3 +8,6 @@ C:\Users\alumno\Source\Repos\GestionTelevisionPablo\obj\Debug\GestionTelevisionP
 C:\Users\alumno\Source\Repos\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.csproj.CoreCompileInputs.cache
 C:\Users\alumno\Source\Repos\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.exe
 C:\Users\alumno\Source\Repos\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.pdb
+C:\Users\alumno\Source\Repos\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Principal.resources
+C:\Users\alumno\Source\Repos\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Programacion.resources
+C:\Users\alumno\Source\Repos\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Usuarios.resources
