@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace GestionTelevisionPablo
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
         private OleDbConnection ctn;
         IDbCommand cmd;
         IDataReader lector;
 
-        public Form1()
+        public Login()
         {
             InitializeComponent();
         }

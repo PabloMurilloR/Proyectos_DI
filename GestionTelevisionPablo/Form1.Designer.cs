@@ -1,6 +1,6 @@
 ﻿namespace GestionTelevisionPablo
 {
-    partial class Form1
+    partial class Login
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.UsuarioTB = new System.Windows.Forms.TextBox();
             this.PassTB = new System.Windows.Forms.TextBox();
             this.Salir = new System.Windows.Forms.Button();
@@ -39,6 +39,7 @@
             // 
             // UsuarioTB
             // 
+            this.UsuarioTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
             this.UsuarioTB.Location = new System.Drawing.Point(322, 124);
             this.UsuarioTB.Name = "UsuarioTB";
             this.UsuarioTB.Size = new System.Drawing.Size(140, 20);
@@ -46,6 +47,7 @@
             // 
             // PassTB
             // 
+            this.PassTB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
             this.PassTB.Location = new System.Drawing.Point(322, 178);
             this.PassTB.Name = "PassTB";
             this.PassTB.PasswordChar = '*';
@@ -56,6 +58,7 @@
             // 
             this.Salir.BackColor = System.Drawing.Color.Transparent;
             this.Salir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Salir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
             this.Salir.Location = new System.Drawing.Point(364, 231);
             this.Salir.Name = "Salir";
             this.Salir.Size = new System.Drawing.Size(84, 30);
@@ -69,6 +72,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
             this.label1.Location = new System.Drawing.Point(214, 124);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 20);
@@ -80,6 +84,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
             this.label2.Location = new System.Drawing.Point(214, 176);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 20);
@@ -90,6 +95,7 @@
             // 
             this.Aceptar.BackColor = System.Drawing.Color.Transparent;
             this.Aceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Aceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
             this.Aceptar.Location = new System.Drawing.Point(243, 231);
             this.Aceptar.Name = "Aceptar";
             this.Aceptar.Size = new System.Drawing.Size(84, 30);
@@ -98,11 +104,11 @@
             this.Aceptar.UseVisualStyleBackColor = false;
             this.Aceptar.Click += new System.EventHandler(this.Aceptar_Click);
             // 
-            // Form1
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(708, 450);
@@ -116,7 +122,7 @@
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.TransparencyKey = System.Drawing.Color.Black;
