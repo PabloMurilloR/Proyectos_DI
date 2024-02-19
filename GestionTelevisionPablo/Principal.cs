@@ -82,5 +82,33 @@ namespace GestionTelevisionPablo
                 form.Visible = true;
             }
         }
+
+        private void InformesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form form = null;
+            foreach (Form fForm in MdiChildren)
+            {
+                if (fForm.Name.Equals("Informes"))
+                {
+                    form = fForm;
+                }
+                else
+                {
+                    fForm.Hide();
+                }
+            }
+
+            if (form == null)
+            {
+                form = new Informes();
+                form.MdiParent = this;
+                form.Dock = DockStyle.Fill;
+                form.Show();
+            }
+            else
+            {
+                form.Visible = true;
+            }
+        }
     }
 }

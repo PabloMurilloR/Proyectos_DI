@@ -10,26 +10,16 @@ using System.Windows.Forms;
 
 namespace GestionTelevisionPablo
 {
-    public partial class Programacion : Form
+    public partial class Informes : Form
     {
-        public Programacion()
+        public Informes()
         {
             InitializeComponent();
         }
 
-        private void SalirProg_Click(object sender, EventArgs e)
+        private void SalirBT_Click(object sender, EventArgs e)
         {
             Dispose();
-        }
-
-        private void BtnNew_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BtnSave_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

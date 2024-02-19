@@ -16,5 +16,10 @@ namespace GestionTelevisionPablo
         {
             InitializeComponent();
         }
+
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
     }
 }
