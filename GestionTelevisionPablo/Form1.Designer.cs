@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.UsuarioTB = new System.Windows.Forms.TextBox();
             this.PassTB = new System.Windows.Forms.TextBox();
-            this.Salir = new System.Windows.Forms.Button();
+            this.AceptarBT = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Aceptar = new System.Windows.Forms.Button();
+            this.CancelarBT = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // UsuarioTB
@@ -54,18 +54,18 @@
             this.PassTB.Size = new System.Drawing.Size(140, 20);
             this.PassTB.TabIndex = 1;
             // 
-            // Salir
+            // AceptarBT
             // 
-            this.Salir.BackColor = System.Drawing.Color.Transparent;
-            this.Salir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Salir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
-            this.Salir.Location = new System.Drawing.Point(364, 231);
-            this.Salir.Name = "Salir";
-            this.Salir.Size = new System.Drawing.Size(84, 30);
-            this.Salir.TabIndex = 2;
-            this.Salir.Text = "Cancelar";
-            this.Salir.UseVisualStyleBackColor = false;
-            this.Salir.Click += new System.EventHandler(this.Salir_Click);
+            this.AceptarBT.BackColor = System.Drawing.Color.Transparent;
+            this.AceptarBT.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AceptarBT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
+            this.AceptarBT.Location = new System.Drawing.Point(243, 231);
+            this.AceptarBT.Name = "AceptarBT";
+            this.AceptarBT.Size = new System.Drawing.Size(84, 30);
+            this.AceptarBT.TabIndex = 2;
+            this.AceptarBT.Text = "Aceptar";
+            this.AceptarBT.UseVisualStyleBackColor = false;
+            this.AceptarBT.Click += new System.EventHandler(this.Aceptar_Click);
             // 
             // label1
             // 
@@ -91,18 +91,18 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Contraseña";
             // 
-            // Aceptar
+            // CancelarBT
             // 
-            this.Aceptar.BackColor = System.Drawing.Color.Transparent;
-            this.Aceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Aceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
-            this.Aceptar.Location = new System.Drawing.Point(243, 231);
-            this.Aceptar.Name = "Aceptar";
-            this.Aceptar.Size = new System.Drawing.Size(84, 30);
-            this.Aceptar.TabIndex = 5;
-            this.Aceptar.Text = "Aceptar";
-            this.Aceptar.UseVisualStyleBackColor = false;
-            this.Aceptar.Click += new System.EventHandler(this.Aceptar_Click);
+            this.CancelarBT.BackColor = System.Drawing.Color.Transparent;
+            this.CancelarBT.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CancelarBT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(1)))), ((int)(((byte)(1)))));
+            this.CancelarBT.Location = new System.Drawing.Point(364, 231);
+            this.CancelarBT.Name = "CancelarBT";
+            this.CancelarBT.Size = new System.Drawing.Size(84, 30);
+            this.CancelarBT.TabIndex = 5;
+            this.CancelarBT.Text = "Cancelar";
+            this.CancelarBT.UseVisualStyleBackColor = false;
+            this.CancelarBT.Click += new System.EventHandler(this.Salir_Click);
             // 
             // Login
             // 
@@ -113,10 +113,10 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(708, 450);
             this.ControlBox = false;
-            this.Controls.Add(this.Aceptar);
+            this.Controls.Add(this.CancelarBT);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.Salir);
+            this.Controls.Add(this.AceptarBT);
             this.Controls.Add(this.PassTB);
             this.Controls.Add(this.UsuarioTB);
             this.ForeColor = System.Drawing.Color.Black;
@@ -135,10 +135,10 @@
 
         private System.Windows.Forms.TextBox UsuarioTB;
         private System.Windows.Forms.TextBox PassTB;
-        private System.Windows.Forms.Button Salir;
+        private System.Windows.Forms.Button AceptarBT;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button Aceptar;
+        private System.Windows.Forms.Button CancelarBT;
     }
 }
 

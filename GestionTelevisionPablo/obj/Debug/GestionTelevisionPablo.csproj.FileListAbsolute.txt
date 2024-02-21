@@ -11,3 +11,4 @@ C:\Users\alumno\Source\Repos\GestionTelevisionPablo\obj\Debug\GestionTelevisionP
 C:\Users\alumno\Source\Repos\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Programacion.resources
 C:\Users\alumno\Source\Repos\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Usuarios.resources
 C:\Users\alumno\Source\Repos\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Login.resources
+C:\Users\alumno\Source\Repos\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Informes.resources

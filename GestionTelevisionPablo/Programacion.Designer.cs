@@ -30,14 +30,24 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.BuscarBT = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.titulotraducidoCB = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.ContenidosTP = new System.Windows.Forms.TabPage();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.BorrarBT = new System.Windows.Forms.Button();
+            this.ModoficarBT = new System.Windows.Forms.Button();
+            this.NuevoBT = new System.Windows.Forms.Button();
+            this.sinopsisTB = new System.Windows.Forms.TextBox();
+            this.directorTB = new System.Windows.Forms.TextBox();
+            this.actoresTB = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.duracionTB = new System.Windows.Forms.TextBox();
+            this.anioTB = new System.Windows.Forms.TextBox();
+            this.subgeneroCB = new System.Windows.Forms.ComboBox();
+            this.ratingCB = new System.Windows.Forms.ComboBox();
+            this.generoCB = new System.Windows.Forms.ComboBox();
+            this.ppCB = new System.Windows.Forms.ComboBox();
+            this.tituloCB = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -49,18 +59,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.EventosTP = new System.Windows.Forms.TabPage();
-            this.SalirProg = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.NuevoBT = new System.Windows.Forms.Button();
-            this.ModoficarBT = new System.Windows.Forms.Button();
-            this.BorrarBT = new System.Windows.Forms.Button();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.SalirProg = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.ContenidosTP.SuspendLayout();
@@ -71,7 +71,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.BuscarBT);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.titulotraducidoCB);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 15);
             this.groupBox1.Name = "groupBox1";
@@ -88,14 +88,15 @@
             this.BuscarBT.TabIndex = 2;
             this.BuscarBT.Text = "Buscar";
             this.BuscarBT.UseVisualStyleBackColor = true;
+            this.BuscarBT.Click += new System.EventHandler(this.BuscarBT_Click);
             // 
-            // comboBox1
+            // titulotraducidoCB
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(108, 30);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(540, 21);
-            this.comboBox1.TabIndex = 1;
+            this.titulotraducidoCB.FormattingEnabled = true;
+            this.titulotraducidoCB.Location = new System.Drawing.Point(108, 30);
+            this.titulotraducidoCB.Name = "titulotraducidoCB";
+            this.titulotraducidoCB.Size = new System.Drawing.Size(540, 21);
+            this.titulotraducidoCB.TabIndex = 1;
             // 
             // label1
             // 
@@ -122,17 +123,17 @@
             this.ContenidosTP.Controls.Add(this.BorrarBT);
             this.ContenidosTP.Controls.Add(this.ModoficarBT);
             this.ContenidosTP.Controls.Add(this.NuevoBT);
-            this.ContenidosTP.Controls.Add(this.textBox5);
-            this.ContenidosTP.Controls.Add(this.textBox4);
-            this.ContenidosTP.Controls.Add(this.textBox3);
+            this.ContenidosTP.Controls.Add(this.sinopsisTB);
+            this.ContenidosTP.Controls.Add(this.directorTB);
+            this.ContenidosTP.Controls.Add(this.actoresTB);
             this.ContenidosTP.Controls.Add(this.label12);
-            this.ContenidosTP.Controls.Add(this.textBox2);
-            this.ContenidosTP.Controls.Add(this.textBox1);
-            this.ContenidosTP.Controls.Add(this.comboBox6);
-            this.ContenidosTP.Controls.Add(this.comboBox5);
-            this.ContenidosTP.Controls.Add(this.comboBox4);
-            this.ContenidosTP.Controls.Add(this.comboBox3);
-            this.ContenidosTP.Controls.Add(this.comboBox2);
+            this.ContenidosTP.Controls.Add(this.duracionTB);
+            this.ContenidosTP.Controls.Add(this.anioTB);
+            this.ContenidosTP.Controls.Add(this.subgeneroCB);
+            this.ContenidosTP.Controls.Add(this.ratingCB);
+            this.ContenidosTP.Controls.Add(this.generoCB);
+            this.ContenidosTP.Controls.Add(this.ppCB);
+            this.ContenidosTP.Controls.Add(this.tituloCB);
             this.ContenidosTP.Controls.Add(this.label11);
             this.ContenidosTP.Controls.Add(this.label10);
             this.ContenidosTP.Controls.Add(this.label9);
@@ -151,40 +152,121 @@
             this.ContenidosTP.Text = "Contenidos";
             this.ContenidosTP.UseVisualStyleBackColor = true;
             // 
-            // comboBox5
+            // BorrarBT
             // 
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(105, 121);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(239, 21);
-            this.comboBox5.TabIndex = 13;
+            this.BorrarBT.Location = new System.Drawing.Point(632, 306);
+            this.BorrarBT.Name = "BorrarBT";
+            this.BorrarBT.Size = new System.Drawing.Size(75, 23);
+            this.BorrarBT.TabIndex = 23;
+            this.BorrarBT.Text = "Borrar";
+            this.BorrarBT.UseVisualStyleBackColor = true;
             // 
-            // comboBox4
+            // ModoficarBT
             // 
-            this.comboBox4.Enabled = false;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(105, 91);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(239, 21);
-            this.comboBox4.TabIndex = 12;
+            this.ModoficarBT.Location = new System.Drawing.Point(551, 306);
+            this.ModoficarBT.Name = "ModoficarBT";
+            this.ModoficarBT.Size = new System.Drawing.Size(75, 23);
+            this.ModoficarBT.TabIndex = 22;
+            this.ModoficarBT.Text = "Modificar";
+            this.ModoficarBT.UseVisualStyleBackColor = true;
             // 
-            // comboBox3
+            // NuevoBT
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(105, 61);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(239, 21);
-            this.comboBox3.TabIndex = 11;
+            this.NuevoBT.Location = new System.Drawing.Point(468, 306);
+            this.NuevoBT.Name = "NuevoBT";
+            this.NuevoBT.Size = new System.Drawing.Size(75, 23);
+            this.NuevoBT.TabIndex = 21;
+            this.NuevoBT.Text = "Nuevo";
+            this.NuevoBT.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // sinopsisTB
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(56, 19);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(651, 21);
-            this.comboBox2.TabIndex = 10;
+            this.sinopsisTB.Location = new System.Drawing.Point(18, 241);
+            this.sinopsisTB.Multiline = true;
+            this.sinopsisTB.Name = "sinopsisTB";
+            this.sinopsisTB.Size = new System.Drawing.Size(689, 63);
+            this.sinopsisTB.TabIndex = 20;
+            // 
+            // directorTB
+            // 
+            this.directorTB.Location = new System.Drawing.Point(64, 191);
+            this.directorTB.Name = "directorTB";
+            this.directorTB.Size = new System.Drawing.Size(643, 20);
+            this.directorTB.TabIndex = 19;
+            // 
+            // actoresTB
+            // 
+            this.actoresTB.Location = new System.Drawing.Point(64, 161);
+            this.actoresTB.Name = "actoresTB";
+            this.actoresTB.Size = new System.Drawing.Size(643, 20);
+            this.actoresTB.TabIndex = 18;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(656, 124);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(51, 13);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "hh:mm:ss";
+            // 
+            // duracionTB
+            // 
+            this.duracionTB.Location = new System.Drawing.Point(468, 122);
+            this.duracionTB.Name = "duracionTB";
+            this.duracionTB.Size = new System.Drawing.Size(182, 20);
+            this.duracionTB.TabIndex = 16;
+            // 
+            // anioTB
+            // 
+            this.anioTB.Location = new System.Drawing.Point(468, 61);
+            this.anioTB.Name = "anioTB";
+            this.anioTB.Size = new System.Drawing.Size(239, 20);
+            this.anioTB.TabIndex = 15;
+            // 
+            // subgeneroCB
+            // 
+            this.subgeneroCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.subgeneroCB.FormattingEnabled = true;
+            this.subgeneroCB.Location = new System.Drawing.Point(468, 91);
+            this.subgeneroCB.Name = "subgeneroCB";
+            this.subgeneroCB.Size = new System.Drawing.Size(239, 21);
+            this.subgeneroCB.TabIndex = 14;
+            // 
+            // ratingCB
+            // 
+            this.ratingCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ratingCB.FormattingEnabled = true;
+            this.ratingCB.Location = new System.Drawing.Point(105, 121);
+            this.ratingCB.Name = "ratingCB";
+            this.ratingCB.Size = new System.Drawing.Size(239, 21);
+            this.ratingCB.TabIndex = 13;
+            // 
+            // generoCB
+            // 
+            this.generoCB.Enabled = false;
+            this.generoCB.FormattingEnabled = true;
+            this.generoCB.Location = new System.Drawing.Point(105, 91);
+            this.generoCB.Name = "generoCB";
+            this.generoCB.Size = new System.Drawing.Size(239, 21);
+            this.generoCB.TabIndex = 12;
+            // 
+            // ppCB
+            // 
+            this.ppCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ppCB.FormattingEnabled = true;
+            this.ppCB.Location = new System.Drawing.Point(105, 61);
+            this.ppCB.Name = "ppCB";
+            this.ppCB.Size = new System.Drawing.Size(239, 21);
+            this.ppCB.TabIndex = 11;
+            // 
+            // tituloCB
+            // 
+            this.tituloCB.FormattingEnabled = true;
+            this.tituloCB.Location = new System.Drawing.Point(56, 19);
+            this.tituloCB.Name = "tituloCB";
+            this.tituloCB.Size = new System.Drawing.Size(651, 21);
+            this.tituloCB.TabIndex = 10;
             // 
             // label11
             // 
@@ -287,6 +369,14 @@
             this.EventosTP.Text = "Eventos";
             this.EventosTP.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(736, 335);
+            this.dataGridView1.TabIndex = 0;
+            // 
             // SalirProg
             // 
             this.SalirProg.Location = new System.Drawing.Point(682, 461);
@@ -296,95 +386,6 @@
             this.SalirProg.Text = "Salir >>";
             this.SalirProg.UseVisualStyleBackColor = true;
             this.SalirProg.Click += new System.EventHandler(this.SalirProg_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(468, 61);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(239, 20);
-            this.textBox1.TabIndex = 15;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(468, 122);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(182, 20);
-            this.textBox2.TabIndex = 16;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(656, 124);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(51, 13);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "hh:mm:ss";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(64, 161);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(643, 20);
-            this.textBox3.TabIndex = 18;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(64, 191);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(643, 20);
-            this.textBox4.TabIndex = 19;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(18, 241);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(689, 63);
-            this.textBox5.TabIndex = 20;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(736, 335);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // NuevoBT
-            // 
-            this.NuevoBT.Location = new System.Drawing.Point(468, 306);
-            this.NuevoBT.Name = "NuevoBT";
-            this.NuevoBT.Size = new System.Drawing.Size(75, 23);
-            this.NuevoBT.TabIndex = 21;
-            this.NuevoBT.Text = "Nuevo";
-            this.NuevoBT.UseVisualStyleBackColor = true;
-            // 
-            // ModoficarBT
-            // 
-            this.ModoficarBT.Location = new System.Drawing.Point(551, 306);
-            this.ModoficarBT.Name = "ModoficarBT";
-            this.ModoficarBT.Size = new System.Drawing.Size(75, 23);
-            this.ModoficarBT.TabIndex = 22;
-            this.ModoficarBT.Text = "Modificar";
-            this.ModoficarBT.UseVisualStyleBackColor = true;
-            // 
-            // BorrarBT
-            // 
-            this.BorrarBT.Location = new System.Drawing.Point(632, 306);
-            this.BorrarBT.Name = "BorrarBT";
-            this.BorrarBT.Size = new System.Drawing.Size(75, 23);
-            this.BorrarBT.TabIndex = 23;
-            this.BorrarBT.Text = "Borrar";
-            this.BorrarBT.UseVisualStyleBackColor = true;
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(468, 91);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(239, 21);
-            this.comboBox6.TabIndex = 14;
             // 
             // Programacion
             // 
@@ -413,16 +414,16 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button BuscarBT;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox titulotraducidoCB;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage ContenidosTP;
         private System.Windows.Forms.TabPage EventosTP;
         private System.Windows.Forms.Button SalirProg;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox ratingCB;
+        private System.Windows.Forms.ComboBox generoCB;
+        private System.Windows.Forms.ComboBox ppCB;
+        private System.Windows.Forms.ComboBox tituloCB;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -433,16 +434,16 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox sinopsisTB;
+        private System.Windows.Forms.TextBox directorTB;
+        private System.Windows.Forms.TextBox actoresTB;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox duracionTB;
+        private System.Windows.Forms.TextBox anioTB;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button BorrarBT;
         private System.Windows.Forms.Button ModoficarBT;
         private System.Windows.Forms.Button NuevoBT;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox subgeneroCB;
     }
 }
