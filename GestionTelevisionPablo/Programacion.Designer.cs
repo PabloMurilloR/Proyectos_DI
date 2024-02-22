@@ -47,7 +47,6 @@
             this.ratingCB = new System.Windows.Forms.ComboBox();
             this.generoCB = new System.Windows.Forms.ComboBox();
             this.ppCB = new System.Windows.Forms.ComboBox();
-            this.tituloCB = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -61,6 +60,7 @@
             this.EventosTP = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.SalirProg = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.ContenidosTP.SuspendLayout();
@@ -120,6 +120,7 @@
             // 
             // ContenidosTP
             // 
+            this.ContenidosTP.Controls.Add(this.textBox1);
             this.ContenidosTP.Controls.Add(this.BorrarBT);
             this.ContenidosTP.Controls.Add(this.ModoficarBT);
             this.ContenidosTP.Controls.Add(this.NuevoBT);
@@ -133,7 +134,6 @@
             this.ContenidosTP.Controls.Add(this.ratingCB);
             this.ContenidosTP.Controls.Add(this.generoCB);
             this.ContenidosTP.Controls.Add(this.ppCB);
-            this.ContenidosTP.Controls.Add(this.tituloCB);
             this.ContenidosTP.Controls.Add(this.label11);
             this.ContenidosTP.Controls.Add(this.label10);
             this.ContenidosTP.Controls.Add(this.label9);
@@ -260,14 +260,6 @@
             this.ppCB.Size = new System.Drawing.Size(239, 21);
             this.ppCB.TabIndex = 11;
             // 
-            // tituloCB
-            // 
-            this.tituloCB.FormattingEnabled = true;
-            this.tituloCB.Location = new System.Drawing.Point(56, 19);
-            this.tituloCB.Name = "tituloCB";
-            this.tituloCB.Size = new System.Drawing.Size(651, 21);
-            this.tituloCB.TabIndex = 10;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -387,6 +379,13 @@
             this.SalirProg.UseVisualStyleBackColor = true;
             this.SalirProg.Click += new System.EventHandler(this.SalirProg_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(56, 19);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(651, 20);
+            this.textBox1.TabIndex = 24;
+            // 
             // Programacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -423,7 +422,6 @@
         private System.Windows.Forms.ComboBox ratingCB;
         private System.Windows.Forms.ComboBox generoCB;
         private System.Windows.Forms.ComboBox ppCB;
-        private System.Windows.Forms.ComboBox tituloCB;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -445,5 +443,6 @@
         private System.Windows.Forms.Button ModoficarBT;
         private System.Windows.Forms.Button NuevoBT;
         private System.Windows.Forms.ComboBox subgeneroCB;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

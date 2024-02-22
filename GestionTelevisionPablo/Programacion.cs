@@ -31,10 +31,6 @@ namespace GestionTelevisionPablo
             this.titulotraducidoCB.DataSource = emisionesT;
             this.titulotraducidoCB.DisplayMember = "TituloTraducido";
             this.titulotraducidoCB.SelectedIndex = -1;
-
-            this.tituloCB.DataSource = emisionesT;
-            this.tituloCB.DisplayMember = "TituloOriginal";
-            this.tituloCB.SelectedIndex = -1;
             #endregion
 
             #region Paises Produccion
@@ -97,6 +93,7 @@ namespace GestionTelevisionPablo
             {
                 if (registro["IdEmision"].Equals(tituloTrad["IdEmision"]))
                 {
+
                 }
             }
         }

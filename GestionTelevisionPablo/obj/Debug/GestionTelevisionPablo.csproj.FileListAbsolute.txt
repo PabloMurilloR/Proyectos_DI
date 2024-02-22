@@ -12,3 +12,17 @@ C:\Users\alumno\Source\Repos\GestionTelevisionPablo\obj\Debug\GestionTelevisionP
 C:\Users\alumno\Source\Repos\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Usuarios.resources
 C:\Users\alumno\Source\Repos\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Login.resources
 C:\Users\alumno\Source\Repos\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Informes.resources
+G:\source\repos\Proyectos_DI\GestionTelevisionPablo\bin\Debug\GestionTelevisionPablo.exe.config
+G:\source\repos\Proyectos_DI\GestionTelevisionPablo\bin\Debug\GestionTelevisionPablo.exe
+G:\source\repos\Proyectos_DI\GestionTelevisionPablo\bin\Debug\GestionTelevisionPablo.pdb
+G:\source\repos\Proyectos_DI\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.csproj.AssemblyReference.cache
+G:\source\repos\Proyectos_DI\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Login.resources
+G:\source\repos\Proyectos_DI\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Informes.resources
+G:\source\repos\Proyectos_DI\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Principal.resources
+G:\source\repos\Proyectos_DI\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Programacion.resources
+G:\source\repos\Proyectos_DI\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Properties.Resources.resources
+G:\source\repos\Proyectos_DI\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Usuarios.resources
+G:\source\repos\Proyectos_DI\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.csproj.GenerateResource.cache
+G:\source\repos\Proyectos_DI\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.csproj.CoreCompileInputs.cache
+G:\source\repos\Proyectos_DI\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.exe
+G:\source\repos\Proyectos_DI\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.pdb

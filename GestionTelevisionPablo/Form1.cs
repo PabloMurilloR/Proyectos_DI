@@ -45,6 +45,7 @@ namespace GestionTelevisionPablo
                     if (this.UsuarioTB.Text.Equals(lector.GetString(1)) && this.PassTB.Text.Equals(lector.GetString(2)))
                     {
                         encontrado = true;
+                        MessageBox.Show("Login correcto", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Principal principal = new Principal();
                         principal.Show();
                         this.Hide();
