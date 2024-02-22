@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.ContenidosTP = new System.Windows.Forms.TabPage();
+            this.tituloTB = new System.Windows.Forms.TextBox();
             this.BorrarBT = new System.Windows.Forms.Button();
             this.ModoficarBT = new System.Windows.Forms.Button();
             this.NuevoBT = new System.Windows.Forms.Button();
@@ -60,7 +61,6 @@
             this.EventosTP = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.SalirProg = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.ContenidosTP.SuspendLayout();
@@ -120,7 +120,7 @@
             // 
             // ContenidosTP
             // 
-            this.ContenidosTP.Controls.Add(this.textBox1);
+            this.ContenidosTP.Controls.Add(this.tituloTB);
             this.ContenidosTP.Controls.Add(this.BorrarBT);
             this.ContenidosTP.Controls.Add(this.ModoficarBT);
             this.ContenidosTP.Controls.Add(this.NuevoBT);
@@ -152,6 +152,13 @@
             this.ContenidosTP.Text = "Contenidos";
             this.ContenidosTP.UseVisualStyleBackColor = true;
             // 
+            // tituloTB
+            // 
+            this.tituloTB.Location = new System.Drawing.Point(56, 19);
+            this.tituloTB.Name = "tituloTB";
+            this.tituloTB.Size = new System.Drawing.Size(651, 20);
+            this.tituloTB.TabIndex = 24;
+            // 
             // BorrarBT
             // 
             this.BorrarBT.Location = new System.Drawing.Point(632, 306);
@@ -160,6 +167,7 @@
             this.BorrarBT.TabIndex = 23;
             this.BorrarBT.Text = "Borrar";
             this.BorrarBT.UseVisualStyleBackColor = true;
+            this.BorrarBT.Click += new System.EventHandler(this.BorrarBT_Click);
             // 
             // ModoficarBT
             // 
@@ -178,6 +186,7 @@
             this.NuevoBT.TabIndex = 21;
             this.NuevoBT.Text = "Nuevo";
             this.NuevoBT.UseVisualStyleBackColor = true;
+            this.NuevoBT.Click += new System.EventHandler(this.NuevoBT_Click);
             // 
             // sinopsisTB
             // 
@@ -379,13 +388,6 @@
             this.SalirProg.UseVisualStyleBackColor = true;
             this.SalirProg.Click += new System.EventHandler(this.SalirProg_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(56, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(651, 20);
-            this.textBox1.TabIndex = 24;
-            // 
             // Programacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -443,6 +445,6 @@
         private System.Windows.Forms.Button ModoficarBT;
         private System.Windows.Forms.Button NuevoBT;
         private System.Windows.Forms.ComboBox subgeneroCB;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tituloTB;
     }
 }

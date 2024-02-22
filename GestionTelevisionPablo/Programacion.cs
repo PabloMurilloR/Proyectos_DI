@@ -51,6 +51,10 @@ namespace GestionTelevisionPablo
 
             #region Generos
             this.generosT = generosT;
+
+            this.generoCB.DataSource = generosT;
+            this.generoCB.DisplayMember = "Genero";
+            this.generoCB.SelectedIndex = -1;
             #endregion
 
             #region Ratings
@@ -89,13 +93,81 @@ namespace GestionTelevisionPablo
         private void BuscarBT_Click(object sender, EventArgs e)
         {
             DataRow tituloTrad = ((DataRowView) titulotraducidoCB.SelectedItem).Row;
-            foreach (DataRow registro in emisionesT.Rows)
-            {
-                if (registro["IdEmision"].Equals(tituloTrad["IdEmision"]))
-                {
 
+            tituloTB.Text = tituloTrad["TituloOriginal"].ToString();
+            anioTB.Text = tituloTrad["YearProduccion"].ToString();
+            actoresTB.Text = tituloTrad["Actores"].ToString();
+            directorTB.Text = tituloTrad["Director"].ToString();
+            sinopsisTB.Text = tituloTrad["Sinopsis"].ToString();
+            duracionTB.Text = tituloTrad["Duracion"].ToString().Substring(11);
+
+            int pos = 0;
+            foreach (DataRow registro in paisesproduccionT.Rows)
+            {
+                if (registro["idPais"].Equals(tituloTrad["IdPais"]))
+                {
+                    ppCB.SelectedIndex = pos;
+                }
+                pos++;
+            }
+
+            pos = 0;
+
+            string idgen = "";
+            foreach (DataRow registro in subgenerosT.Rows)
+            {
+                if (registro["idsubgenero"].Equals(tituloTrad["idsubgenero"]))
+                {
+                    subgeneroCB.SelectedIndex = pos;
+
+                    idgen = registro["idgenero"].ToString();
+                }
+                pos++;
+            }
+
+            pos = 0;
+            foreach (DataRow registro in generosT.Rows)
+            {
+                if (registro["idgenero"].ToString().Equals(idgen))
+                {
+                    generoCB.SelectedIndex = pos;
+                    pos++;
                 }
             }
+
+            pos = 0;
+            foreach (DataRow registro in ratingsT.Rows)
+            {
+                if (registro["idrating"].Equals(tituloTrad["idrating"]))
+                {
+                    ratingCB.SelectedIndex = pos;
+                }
+                pos++;
+            }
+        }
+
+        private void BorrarBT_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void limpiar()
+        {
+            tituloTB.Text = "";
+            ppCB.SelectedIndex = -1;
+            anioTB.Text = "";
+            generoCB.SelectedIndex = -1;
+            subgeneroCB.SelectedIndex = -1;
+            ratingCB.SelectedIndex = -1;
+            duracionTB.Text = "";
+            actoresTB.Text = "";
+            directorTB.Text = "";
+            sinopsisTB.Text = "";
+        }
+
+        private void NuevoBT_Click(object sender, EventArgs e)
+        {
+            limpiar();
         }
     }
 }
