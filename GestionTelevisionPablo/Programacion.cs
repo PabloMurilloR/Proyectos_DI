@@ -92,57 +92,64 @@ namespace GestionTelevisionPablo
 
         private void BuscarBT_Click(object sender, EventArgs e)
         {
-            DataRow tituloTrad = ((DataRowView) titulotraducidoCB.SelectedItem).Row;
-
-            tituloTB.Text = tituloTrad["TituloOriginal"].ToString();
-            anioTB.Text = tituloTrad["YearProduccion"].ToString();
-            actoresTB.Text = tituloTrad["Actores"].ToString();
-            directorTB.Text = tituloTrad["Director"].ToString();
-            sinopsisTB.Text = tituloTrad["Sinopsis"].ToString();
-            duracionTB.Text = tituloTrad["Duracion"].ToString().Substring(11);
-
-            int pos = 0;
-            foreach (DataRow registro in paisesproduccionT.Rows)
+            if (titulotraducidoCB.SelectedItem == null)
             {
-                if (registro["idPais"].Equals(tituloTrad["IdPais"]))
-                {
-                    ppCB.SelectedIndex = pos;
-                }
-                pos++;
+                MessageBox.Show("Pelicula no encontrada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            pos = 0;
-
-            string idgen = "";
-            foreach (DataRow registro in subgenerosT.Rows)
+            else
             {
-                if (registro["idsubgenero"].Equals(tituloTrad["idsubgenero"]))
-                {
-                    subgeneroCB.SelectedIndex = pos;
+                DataRow tituloTrad = ((DataRowView)titulotraducidoCB.SelectedItem).Row;
 
-                    idgen = registro["idgenero"].ToString();
-                }
-                pos++;
-            }
+                tituloTB.Text = tituloTrad["TituloOriginal"].ToString();
+                anioTB.Text = tituloTrad["YearProduccion"].ToString();
+                actoresTB.Text = tituloTrad["Actores"].ToString();
+                directorTB.Text = tituloTrad["Director"].ToString();
+                sinopsisTB.Text = tituloTrad["Sinopsis"].ToString();
+                duracionTB.Text = tituloTrad["Duracion"].ToString().Substring(11);
 
-            pos = 0;
-            foreach (DataRow registro in generosT.Rows)
-            {
-                if (registro["idgenero"].ToString().Equals(idgen))
+                int pos = 0;
+                foreach (DataRow registro in paisesproduccionT.Rows)
                 {
-                    generoCB.SelectedIndex = pos;
+                    if (registro["idPais"].Equals(tituloTrad["IdPais"]))
+                    {
+                        ppCB.SelectedIndex = pos;
+                    }
                     pos++;
                 }
-            }
 
-            pos = 0;
-            foreach (DataRow registro in ratingsT.Rows)
-            {
-                if (registro["idrating"].Equals(tituloTrad["idrating"]))
+                pos = 0;
+
+                string idgen = "";
+                foreach (DataRow registro in subgenerosT.Rows)
                 {
-                    ratingCB.SelectedIndex = pos;
+                    if (registro["idsubgenero"].Equals(tituloTrad["idsubgenero"]))
+                    {
+                        subgeneroCB.SelectedIndex = pos;
+
+                        idgen = registro["idgenero"].ToString();
+                    }
+                    pos++;
                 }
-                pos++;
+
+                pos = 0;
+                foreach (DataRow registro in generosT.Rows)
+                {
+                    if (registro["idgenero"].ToString().Equals(idgen))
+                    {
+                        generoCB.SelectedIndex = pos;
+                        pos++;
+                    }
+                }
+
+                pos = 0;
+                foreach (DataRow registro in ratingsT.Rows)
+                {
+                    if (registro["idrating"].Equals(tituloTrad["idrating"]))
+                    {
+                        ratingCB.SelectedIndex = pos;
+                    }
+                    pos++;
+                }
             }
         }
 
