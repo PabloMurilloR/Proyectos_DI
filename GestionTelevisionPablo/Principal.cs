@@ -31,6 +31,8 @@ namespace GestionTelevisionPablo
         OleDbDataAdapter daGeneros;
         DataTable generosT;
         OleDbCommandBuilder cb;
+        OleDbDataAdapter daUsuarios;
+        DataTable usuariosT;
 
         public Principal()
         {
@@ -140,6 +142,20 @@ namespace GestionTelevisionPablo
 
                 generosT = ds.Tables["Generos"];
                 #endregion
+
+                #region Usuarios
+                cmd = new OleDbCommand();
+                cmd.Connection = ctn;
+                cmd.CommandText = "SELECT * from Usuarios";
+
+                daUsuarios = new OleDbDataAdapter();
+                cb = new OleDbCommandBuilder(daUsuarios);
+                daUsuarios.SelectCommand = cmd;
+
+                daUsuarios.Fill(ds, "Usuarios");
+
+                usuariosT = ds.Tables["Usuarios"];
+                #endregion
             }
             catch (Exception)
             {
@@ -151,6 +167,10 @@ namespace GestionTelevisionPablo
 
         private void Principal_FormClosing(object sender, FormClosingEventArgs e)
         {
+            daEmisiones.Update(ds, "Emisiones");
+            daUsuarios.Update(ds, "Usuarios");
+            ds.AcceptChanges();
+
             Application.Exit();
         }
 
@@ -204,35 +224,7 @@ namespace GestionTelevisionPablo
 
             if (form == null)
             {
-                form = new Usuarios();
-                form.MdiParent = this;
-                form.Dock = DockStyle.Fill;
-                form.Show();
-            }
-            else
-            {
-                form.Visible = true;
-            }
-        }
-
-        private void InformesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form form = null;
-            foreach (Form fForm in MdiChildren)
-            {
-                if (fForm.Name.Equals("Informes"))
-                {
-                    form = fForm;
-                }
-                else
-                {
-                    fForm.Hide();
-                }
-            }
-
-            if (form == null)
-            {
-                form = new Informes();
+                form = new Usuarios(usuariosT);
                 form.MdiParent = this;
                 form.Dock = DockStyle.Fill;
                 form.Show();

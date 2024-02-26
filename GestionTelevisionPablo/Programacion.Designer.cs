@@ -177,6 +177,7 @@
             this.ModoficarBT.TabIndex = 22;
             this.ModoficarBT.Text = "Modificar";
             this.ModoficarBT.UseVisualStyleBackColor = true;
+            this.ModoficarBT.Click += new System.EventHandler(this.ModoficarBT_Click);
             // 
             // NuevoBT
             // 

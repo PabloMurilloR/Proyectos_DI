@@ -80,6 +80,7 @@
             this.UsuarioCB.Name = "UsuarioCB";
             this.UsuarioCB.Size = new System.Drawing.Size(400, 26);
             this.UsuarioCB.TabIndex = 0;
+            this.UsuarioCB.SelectedIndexChanged += new System.EventHandler(this.UsuarioCB_SelectedIndexChanged);
             // 
             // GbData
             // 

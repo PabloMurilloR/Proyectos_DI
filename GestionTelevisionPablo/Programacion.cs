@@ -92,11 +92,7 @@ namespace GestionTelevisionPablo
 
         private void BuscarBT_Click(object sender, EventArgs e)
         {
-            if (titulotraducidoCB.SelectedItem == null)
-            {
-                MessageBox.Show("Pelicula no encontrada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
+            try
             {
                 DataRow tituloTrad = ((DataRowView)titulotraducidoCB.SelectedItem).Row;
 
@@ -151,11 +147,24 @@ namespace GestionTelevisionPablo
                     pos++;
                 }
             }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Pelicula no encontrada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BorrarBT_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                ((DataRowView)titulotraducidoCB.SelectedItem).Row.Delete();
+                limpiar();
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("No ha seleccionado una película válida.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void limpiar()
@@ -175,6 +184,56 @@ namespace GestionTelevisionPablo
         private void NuevoBT_Click(object sender, EventArgs e)
         {
             limpiar();
+        }
+
+        private bool HayCamposVacios()
+        {
+            return titulotraducidoCB.Text.Equals("") || tituloTB.Text.Equals("") ||
+                ppCB.SelectedIndex == -1 || anioTB.Text.Equals("") ||
+                generoCB.SelectedIndex == -1 || subgeneroCB.SelectedIndex == -1 ||
+                ratingCB.SelectedIndex == -1 || duracionTB.Text.Equals("") ||
+                actoresTB.Text.Equals("") || directorTB.Text.Equals("") ||
+                sinopsisTB.Text.Equals("");
+        }
+
+        private void ModoficarBT_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataRow filaNueva = ((DataRowView)titulotraducidoCB.SelectedItem).Row;
+                if (!HayCamposVacios())
+                {
+                    filaNueva.BeginEdit();
+                    filaNueva["titulooriginal"] = tituloTB.Text;
+                    filaNueva["titulotraducido"] = titulotraducidoCB.Text;
+                    filaNueva["idsubgenero"] = Convert.ToInt32(subgeneroCB.SelectedValue);
+                    filaNueva["duracion"] = DateTime.Parse(duracionTB.Text);
+                    filaNueva["yearproduccion"] = Convert.ToInt32(anioTB.Text);
+                    filaNueva["actores"] = actoresTB.Text;
+                    filaNueva["director"] = directorTB.Text;
+                    filaNueva["sinopsis"] = sinopsisTB.Text;
+                    filaNueva["idrating"] = Convert.ToInt32(ratingCB.SelectedValue);
+                    filaNueva["idpais"] = Convert.ToInt32(ppCB.SelectedValue);
+                    filaNueva.EndEdit();
+
+                    limpiar();
+
+                }
+                else
+                {
+                    MessageBox.Show("Hay campos vacíos.", "Campos vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Formato de año o duración inválidos.", "Formato inválido", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("No ha seleccionado una película válida.", "Selección inválida", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
         }
     }
 }
