@@ -263,7 +263,7 @@ namespace GestionEmpleadosConecPablo
                 string fecha = lector.GetValue(4).ToString().Substring(0, lector.GetValue(4).ToString().IndexOf(' '));
                 if ((lector.GetString(1).Equals(ApellidosLB.Text.ToString().ToUpper())) && fecha.Equals(fechaTiempo))
                 {
-                    usuarioExistente = false;
+                    usuarioExistente = true;
                 }
 
             }
@@ -307,8 +307,6 @@ namespace GestionEmpleadosConecPablo
             }
 
             lector.Close();
-
-            rellenarUsuarios();
         }
 
         private void rellenarUsuarios()
