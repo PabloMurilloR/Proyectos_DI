@@ -19,6 +19,7 @@ namespace GestionTelevisionPablo
         DataTable ratingsT;
         DataTable subgenerosT;
         DataTable generosT;
+        string idEmision;
 
         public Programacion(DataTable emisionesT, DataTable paisesproduccionT, DataTable subgenerosT,
             DataTable generosT, DataTable ratingsT, DataTable eventosT, DataTable canalesT)
@@ -96,6 +97,8 @@ namespace GestionTelevisionPablo
             {
                 DataRow tituloTrad = ((DataRowView)titulotraducidoCB.SelectedItem).Row;
 
+                idEmision = tituloTrad["IdEmision"].ToString();
+
                 tituloTB.Text = tituloTrad["TituloOriginal"].ToString();
                 anioTB.Text = tituloTrad["YearProduccion"].ToString();
                 actoresTB.Text = tituloTrad["Actores"].ToString();
@@ -172,13 +175,13 @@ namespace GestionTelevisionPablo
             tituloTB.Text = "";
             ppCB.SelectedIndex = -1;
             anioTB.Text = "";
-            generoCB.SelectedIndex = -1;
-            subgeneroCB.SelectedIndex = -1;
             ratingCB.SelectedIndex = -1;
             duracionTB.Text = "";
             actoresTB.Text = "";
             directorTB.Text = "";
             sinopsisTB.Text = "";
+            generoCB.SelectedIndex = -1;
+            subgeneroCB.SelectedIndex = -1;
         }
 
         private void NuevoBT_Click(object sender, EventArgs e)
@@ -200,22 +203,23 @@ namespace GestionTelevisionPablo
         {
             try
             {
-                DataRow filaNueva = ((DataRowView)titulotraducidoCB.SelectedItem).Row;
                 if (!HayCamposVacios())
                 {
+                    DataRow filaNueva = ((DataRowView)titulotraducidoCB.SelectedItem).Row;
                     filaNueva.BeginEdit();
                     filaNueva["titulooriginal"] = tituloTB.Text;
                     filaNueva["titulotraducido"] = titulotraducidoCB.Text;
-                    filaNueva["idsubgenero"] = Convert.ToInt32(subgeneroCB.SelectedValue);
+                    filaNueva["idsubgenero"] = ((DataRowView)subgeneroCB.SelectedItem)["idsubgenero"];
                     filaNueva["duracion"] = DateTime.Parse(duracionTB.Text);
-                    filaNueva["yearproduccion"] = Convert.ToInt32(anioTB.Text);
+                    filaNueva["yearproduccion"] = anioTB.Text;
                     filaNueva["actores"] = actoresTB.Text;
                     filaNueva["director"] = directorTB.Text;
                     filaNueva["sinopsis"] = sinopsisTB.Text;
-                    filaNueva["idrating"] = Convert.ToInt32(ratingCB.SelectedValue);
-                    filaNueva["idpais"] = Convert.ToInt32(ppCB.SelectedValue);
+                    filaNueva["idrating"] = ((DataRowView)ratingCB.SelectedItem)["idrating"];
+                    filaNueva["idpais"] = ((DataRowView)ppCB.SelectedItem)["idpais"];
                     filaNueva.EndEdit();
 
+                    titulotraducidoCB.SelectedIndex = -1;
                     limpiar();
 
                 }
@@ -233,6 +237,15 @@ namespace GestionTelevisionPablo
             {
                 MessageBox.Show("No ha seleccionado una película válida.", "Selección inválida", MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
+            }
+        }
+
+        private void subgeneroCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (generosT != null && ((ComboBox)sender).SelectedItem != null)
+            {
+                int idGen = (int)((DataRowView)((ComboBox)sender).SelectedItem).Row["idgenero"];
+                generosT.DefaultView.RowFilter = "idgenero = " + idGen;
             }
         }
     }

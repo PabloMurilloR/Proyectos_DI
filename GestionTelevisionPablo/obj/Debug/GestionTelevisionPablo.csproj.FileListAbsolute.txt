@@ -17,7 +17,6 @@ G:\source\repos\Proyectos_DI\GestionTelevisionPablo\bin\Debug\GestionTelevisionP
 G:\source\repos\Proyectos_DI\GestionTelevisionPablo\bin\Debug\GestionTelevisionPablo.pdb
 G:\source\repos\Proyectos_DI\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.csproj.AssemblyReference.cache
 G:\source\repos\Proyectos_DI\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Login.resources
-G:\source\repos\Proyectos_DI\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Informes.resources
 G:\source\repos\Proyectos_DI\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Principal.resources
 G:\source\repos\Proyectos_DI\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Programacion.resources
 G:\source\repos\Proyectos_DI\GestionTelevisionPablo\obj\Debug\GestionTelevisionPablo.Properties.Resources.resources

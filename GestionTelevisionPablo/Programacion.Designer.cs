@@ -242,6 +242,7 @@
             this.subgeneroCB.Name = "subgeneroCB";
             this.subgeneroCB.Size = new System.Drawing.Size(239, 21);
             this.subgeneroCB.TabIndex = 14;
+            this.subgeneroCB.SelectedIndexChanged += new System.EventHandler(this.subgeneroCB_SelectedIndexChanged);
             // 
             // ratingCB
             // 
