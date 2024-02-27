@@ -16,12 +16,11 @@ namespace GestionTelevisionPablo
         OleDbConnection ctn;
         OleDbCommand cmd;
         DataSet ds;
+        OleDbCommandBuilder cb;
         OleDbDataAdapter daEmisiones;
         DataTable emisionesT;
         OleDbDataAdapter daEventos;
         DataTable eventosT;
-        OleDbDataAdapter daCanales;
-        DataTable canalesT;
         OleDbDataAdapter daPaisesProduccion;
         DataTable paisesproduccionT;
         OleDbDataAdapter daRatings;
@@ -30,9 +29,11 @@ namespace GestionTelevisionPablo
         DataTable subgenerosT;
         OleDbDataAdapter daGeneros;
         DataTable generosT;
-        OleDbCommandBuilder cb;
         OleDbDataAdapter daUsuarios;
         DataTable usuariosT;
+
+        int MaxIdExmision;
+        int MaxIdUsuario;
 
         public Principal()
         {
@@ -62,7 +63,8 @@ namespace GestionTelevisionPablo
                 #region Eventos
                 cmd = new OleDbCommand();
                 cmd.Connection = ctn;
-                cmd.CommandText = "SELECT * from Eventos";
+                cmd.CommandText = "SELECT e.idemision, c.nombrecanal as canal, e.fecha, FORMAT(e.hora, \"hh:mm:ss\") as hora, e.codificado " +
+                    "FROM eventos e INNER JOIN canales c on (c.idcanal = e.idcanal)";
 
                 daEventos = new OleDbDataAdapter();
                 cb = new OleDbCommandBuilder(daEventos);
@@ -71,20 +73,6 @@ namespace GestionTelevisionPablo
                 daEventos.Fill(ds, "Eventos");
 
                 eventosT = ds.Tables["Eventos"];
-                #endregion
-
-                #region Canales
-                cmd = new OleDbCommand();
-                cmd.Connection = ctn;
-                cmd.CommandText = "SELECT * from Canales";
-
-                daCanales = new OleDbDataAdapter();
-                cb = new OleDbCommandBuilder(daCanales);
-                daCanales.SelectCommand = cmd;
-
-                daCanales.Fill(ds, "Canales");
-
-                canalesT = ds.Tables["Canales"];
                 #endregion
 
                 #region PaisesProduccion
@@ -156,6 +144,8 @@ namespace GestionTelevisionPablo
 
                 usuariosT = ds.Tables["Usuarios"];
                 #endregion
+
+                ctn.Close();
             }
             catch (Exception)
             {
@@ -196,7 +186,7 @@ namespace GestionTelevisionPablo
 
             if (form == null)
             {
-                form = new Programacion(emisionesT, paisesproduccionT, subgenerosT, generosT, ratingsT, eventosT,canalesT);
+                form = new Programacion(emisionesT, paisesproduccionT, subgenerosT, generosT, ratingsT, eventosT, daEmisiones, ds);
                 form.MdiParent = this;
                 form.Dock = DockStyle.Fill;
                 form.Show();
@@ -224,7 +214,7 @@ namespace GestionTelevisionPablo
 
             if (form == null)
             {
-                form = new Usuarios(usuariosT);
+                form = new Usuarios(usuariosT, ds, daUsuarios);
                 form.MdiParent = this;
                 form.Dock = DockStyle.Fill;
                 form.Show();

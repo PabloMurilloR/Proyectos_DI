@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,17 +13,19 @@ namespace GestionTelevisionPablo
 {
     public partial class Programacion : Form
     {
+        OleDbDataAdapter daEmisiones;
+        DataSet ds;
         DataTable emisionesT;
         DataTable eventosT;
-        DataTable canalesT;
         DataTable paisesproduccionT;
         DataTable ratingsT;
         DataTable subgenerosT;
         DataTable generosT;
+        int MaxIdEmision = 0;
         string idEmision;
 
         public Programacion(DataTable emisionesT, DataTable paisesproduccionT, DataTable subgenerosT,
-            DataTable generosT, DataTable ratingsT, DataTable eventosT, DataTable canalesT)
+            DataTable generosT, DataTable ratingsT, DataTable eventosT, OleDbDataAdapter daEmisiones, DataSet ds)
         {
             InitializeComponent();
 
@@ -70,10 +73,8 @@ namespace GestionTelevisionPablo
             this.eventosT = eventosT;
             #endregion
 
-            #region Canales
-            this.canalesT = canalesT;
-            #endregion
-
+            this.daEmisiones = daEmisiones;
+            this.ds = ds;
         }
 
         private void SalirProg_Click(object sender, EventArgs e)
@@ -81,19 +82,9 @@ namespace GestionTelevisionPablo
             Dispose();
         }
 
-        private void BtnNew_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BtnSave_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BuscarBT_Click(object sender, EventArgs e)
         {
-            try
+            if ((DataRowView)titulotraducidoCB.SelectedItem != null)
             {
                 DataRow tituloTrad = ((DataRowView)titulotraducidoCB.SelectedItem).Row;
 
@@ -149,21 +140,35 @@ namespace GestionTelevisionPablo
                     }
                     pos++;
                 }
+
+                eventosT.DefaultView.RowFilter = "idemision = " + Convert.ToString(tituloTrad["idemision"]);
+
+                dataGridView1.DataSource = eventosT;
+                dataGridView1.Columns["idemision"].Visible = false;
+                dataGridView1.Columns["canal"].ReadOnly = true;
+                dataGridView1.Columns["fecha"].ReadOnly = true;
+                dataGridView1.Columns["hora"].ReadOnly = true;
+                dataGridView1.Columns["codificado"].ReadOnly = true;
             }
-            catch (NullReferenceException)
+            else
             {
                 MessageBox.Show("Pelicula no encontrada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+              
         }
 
         private void BorrarBT_Click(object sender, EventArgs e)
         {
-            try
+            if ((DataRowView)titulotraducidoCB.SelectedItem != null)
             {
                 ((DataRowView)titulotraducidoCB.SelectedItem).Row.Delete();
+
+                MessageBox.Show("Pelicula borrada con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 limpiar();
-            }
-            catch (NullReferenceException)
+                titulotraducidoCB.SelectedIndex = -1;
+                daEmisiones.Update(ds, "Emisiones");
+            } else
             {
                 MessageBox.Show("No ha seleccionado una película válida.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -186,7 +191,66 @@ namespace GestionTelevisionPablo
 
         private void NuevoBT_Click(object sender, EventArgs e)
         {
-            limpiar();
+            try
+            {
+                bool usuarioExistente = false;
+
+                foreach (DataRow registro in emisionesT.Rows)
+                {
+                    int id = Convert.ToInt32(registro["IdEmision"]);
+                    if (id > MaxIdEmision)
+                    {
+                        MaxIdEmision = id;
+                    }
+                    if (registro["TituloOriginal"].Equals(titulotraducidoCB.Text))
+                    {
+                        MessageBox.Show("Pelicula ya existente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        titulotraducidoCB.Text = "";
+                        usuarioExistente = true;
+                    }
+                }
+
+                if (!HayCamposVacios() && !usuarioExistente)
+                {
+                    DataRow nuevaFila = emisionesT.NewRow();
+                    MaxIdEmision++;
+                    nuevaFila["IdEmision"] = MaxIdEmision;
+                    nuevaFila["TituloTraducido"] = titulotraducidoCB.Text;
+                    nuevaFila["TituloOriginal"] = tituloTB.Text;
+                    nuevaFila["IdPais"] = ((DataRowView)ppCB.SelectedItem)["idpais"];
+                    nuevaFila["YearProduccion"] = anioTB.Text;
+                    nuevaFila["IdSubgenero"] = ((DataRowView)subgeneroCB.SelectedItem)["idsubgenero"];
+                    nuevaFila["IdRating"] = ((DataRowView)ratingCB.SelectedItem)["idrating"];
+                    nuevaFila["Duracion"] = duracionTB.Text;
+                    nuevaFila["Actores"] = actoresTB.Text;
+                    nuevaFila["Director"] = directorTB.Text;
+                    nuevaFila["Sinopsis"] = sinopsisTB.Text;
+
+                    MessageBox.Show("Pelicula " + titulotraducidoCB.Text + " creada con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    emisionesT.Rows.Add(nuevaFila);
+                    daEmisiones.Update(ds, "Emisiones");
+                }
+                else
+                {
+                    MessageBox.Show("Hay campos vacíos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                limpiar();
+                titulotraducidoCB.SelectedIndex = -1;
+                daEmisiones.Update(ds, "Emisiones");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Formato de año o duración inválido.", "Formato inválido", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Formato de duración inválido.", "Formato inválido", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+
         }
 
         private bool HayCamposVacios()
@@ -199,29 +263,33 @@ namespace GestionTelevisionPablo
                 sinopsisTB.Text.Equals("");
         }
 
-        private void ModoficarBT_Click(object sender, EventArgs e)
+        private void ModificarBT_Click(object sender, EventArgs e)
         {
             try
             {
                 if (!HayCamposVacios())
                 {
-                    DataRow filaNueva = ((DataRowView)titulotraducidoCB.SelectedItem).Row;
-                    filaNueva.BeginEdit();
-                    filaNueva["titulooriginal"] = tituloTB.Text;
-                    filaNueva["titulotraducido"] = titulotraducidoCB.Text;
-                    filaNueva["idsubgenero"] = ((DataRowView)subgeneroCB.SelectedItem)["idsubgenero"];
-                    filaNueva["duracion"] = DateTime.Parse(duracionTB.Text);
-                    filaNueva["yearproduccion"] = anioTB.Text;
-                    filaNueva["actores"] = actoresTB.Text;
-                    filaNueva["director"] = directorTB.Text;
-                    filaNueva["sinopsis"] = sinopsisTB.Text;
-                    filaNueva["idrating"] = ((DataRowView)ratingCB.SelectedItem)["idrating"];
-                    filaNueva["idpais"] = ((DataRowView)ppCB.SelectedItem)["idpais"];
-                    filaNueva.EndEdit();
+                    DataRow[] filaencontrada = emisionesT.Select($"IdEmision =" + idEmision);
+                    DataRow filaModificar = filaencontrada[0];
+                    filaModificar.BeginEdit();
+                    filaModificar["titulooriginal"] = tituloTB.Text;
+                    filaModificar["titulotraducido"] = titulotraducidoCB.Text;
+                    filaModificar["idsubgenero"] = ((DataRowView)subgeneroCB.SelectedItem)["idsubgenero"];
+                    filaModificar["duracion"] = duracionTB.Text;
+                    filaModificar["yearproduccion"] = anioTB.Text;
+                    filaModificar["actores"] = actoresTB.Text;
+                    filaModificar["director"] = directorTB.Text;
+                    filaModificar["sinopsis"] = sinopsisTB.Text;
+                    filaModificar["idrating"] = ((DataRowView)ratingCB.SelectedItem)["idrating"];
+                    filaModificar["idpais"] = ((DataRowView)ppCB.SelectedItem)["idpais"];
+                    filaModificar.EndEdit();
+
+                    MessageBox.Show("Película " + tituloTB.Text + " modificada con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     titulotraducidoCB.SelectedIndex = -1;
                     limpiar();
-
+                    titulotraducidoCB.Text = "";
+                    daEmisiones.Update(ds, "Emisiones");
                 }
                 else
                 {
@@ -230,12 +298,16 @@ namespace GestionTelevisionPablo
             }
             catch (FormatException)
             {
-                MessageBox.Show("Formato de año o duración inválidos.", "Formato inválido", MessageBoxButtons.OK,
+                MessageBox.Show("Formato de año inválido.", "Formato inválido", MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
             }
             catch (NullReferenceException)
             {
                 MessageBox.Show("No ha seleccionado una película válida.", "Selección inválida", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            } catch (ArgumentException)
+            {
+                MessageBox.Show("Formato de duración inválido.", "Formato inválido", MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
             }
         }

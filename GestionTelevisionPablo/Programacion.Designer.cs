@@ -42,8 +42,6 @@
             this.directorTB = new System.Windows.Forms.TextBox();
             this.actoresTB = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.duracionTB = new System.Windows.Forms.TextBox();
-            this.anioTB = new System.Windows.Forms.TextBox();
             this.subgeneroCB = new System.Windows.Forms.ComboBox();
             this.ratingCB = new System.Windows.Forms.ComboBox();
             this.generoCB = new System.Windows.Forms.ComboBox();
@@ -61,6 +59,8 @@
             this.EventosTP = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.SalirProg = new System.Windows.Forms.Button();
+            this.duracionTB = new System.Windows.Forms.TextBox();
+            this.anioTB = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.ContenidosTP.SuspendLayout();
@@ -120,6 +120,8 @@
             // 
             // ContenidosTP
             // 
+            this.ContenidosTP.Controls.Add(this.anioTB);
+            this.ContenidosTP.Controls.Add(this.duracionTB);
             this.ContenidosTP.Controls.Add(this.tituloTB);
             this.ContenidosTP.Controls.Add(this.BorrarBT);
             this.ContenidosTP.Controls.Add(this.ModoficarBT);
@@ -128,8 +130,6 @@
             this.ContenidosTP.Controls.Add(this.directorTB);
             this.ContenidosTP.Controls.Add(this.actoresTB);
             this.ContenidosTP.Controls.Add(this.label12);
-            this.ContenidosTP.Controls.Add(this.duracionTB);
-            this.ContenidosTP.Controls.Add(this.anioTB);
             this.ContenidosTP.Controls.Add(this.subgeneroCB);
             this.ContenidosTP.Controls.Add(this.ratingCB);
             this.ContenidosTP.Controls.Add(this.generoCB);
@@ -177,7 +177,7 @@
             this.ModoficarBT.TabIndex = 22;
             this.ModoficarBT.Text = "Modificar";
             this.ModoficarBT.UseVisualStyleBackColor = true;
-            this.ModoficarBT.Click += new System.EventHandler(this.ModoficarBT_Click);
+            this.ModoficarBT.Click += new System.EventHandler(this.ModificarBT_Click);
             // 
             // NuevoBT
             // 
@@ -219,20 +219,6 @@
             this.label12.Size = new System.Drawing.Size(51, 13);
             this.label12.TabIndex = 17;
             this.label12.Text = "hh:mm:ss";
-            // 
-            // duracionTB
-            // 
-            this.duracionTB.Location = new System.Drawing.Point(468, 122);
-            this.duracionTB.Name = "duracionTB";
-            this.duracionTB.Size = new System.Drawing.Size(182, 20);
-            this.duracionTB.TabIndex = 16;
-            // 
-            // anioTB
-            // 
-            this.anioTB.Location = new System.Drawing.Point(468, 61);
-            this.anioTB.Name = "anioTB";
-            this.anioTB.Size = new System.Drawing.Size(239, 20);
-            this.anioTB.TabIndex = 15;
             // 
             // subgeneroCB
             // 
@@ -390,6 +376,20 @@
             this.SalirProg.UseVisualStyleBackColor = true;
             this.SalirProg.Click += new System.EventHandler(this.SalirProg_Click);
             // 
+            // duracionTB
+            // 
+            this.duracionTB.Location = new System.Drawing.Point(468, 122);
+            this.duracionTB.Name = "duracionTB";
+            this.duracionTB.Size = new System.Drawing.Size(182, 20);
+            this.duracionTB.TabIndex = 27;
+            // 
+            // anioTB
+            // 
+            this.anioTB.Location = new System.Drawing.Point(468, 61);
+            this.anioTB.Name = "anioTB";
+            this.anioTB.Size = new System.Drawing.Size(239, 20);
+            this.anioTB.TabIndex = 28;
+            // 
             // Programacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -440,13 +440,13 @@
         private System.Windows.Forms.TextBox directorTB;
         private System.Windows.Forms.TextBox actoresTB;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox duracionTB;
-        private System.Windows.Forms.TextBox anioTB;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button BorrarBT;
         private System.Windows.Forms.Button ModoficarBT;
         private System.Windows.Forms.Button NuevoBT;
         private System.Windows.Forms.ComboBox subgeneroCB;
         private System.Windows.Forms.TextBox tituloTB;
+        private System.Windows.Forms.TextBox duracionTB;
+        private System.Windows.Forms.TextBox anioTB;
     }
 }

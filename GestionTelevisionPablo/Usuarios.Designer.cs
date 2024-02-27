@@ -75,6 +75,7 @@
             // 
             // UsuarioCB
             // 
+            this.UsuarioCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.UsuarioCB.FormattingEnabled = true;
             this.UsuarioCB.Location = new System.Drawing.Point(200, 42);
             this.UsuarioCB.Name = "UsuarioCB";
@@ -198,6 +199,7 @@
             this.NuevoBT.TabIndex = 2;
             this.NuevoBT.Text = "Nuevo";
             this.NuevoBT.UseVisualStyleBackColor = true;
+            this.NuevoBT.Click += new System.EventHandler(this.NuevoBT_Click);
             // 
             // ModificarBT
             // 
@@ -207,6 +209,7 @@
             this.ModificarBT.TabIndex = 3;
             this.ModificarBT.Text = "Modificar";
             this.ModificarBT.UseVisualStyleBackColor = true;
+            this.ModificarBT.Click += new System.EventHandler(this.ModificarBT_Click);
             // 
             // BorrarBT
             // 
@@ -216,6 +219,7 @@
             this.BorrarBT.TabIndex = 4;
             this.BorrarBT.Text = "Borrar";
             this.BorrarBT.UseVisualStyleBackColor = true;
+            this.BorrarBT.Click += new System.EventHandler(this.BorrarBT_Click);
             // 
             // BtnExit
             // 
